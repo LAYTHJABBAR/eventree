@@ -31,6 +31,7 @@ export default class EventForm extends Component {
                   Submit
                 </Button>
                 <Button onClick={cancelFormOpen} type="button">Cancel</Button>
+                
               </Form>
             </Segment>
     )

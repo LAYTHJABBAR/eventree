@@ -40,11 +40,7 @@ handleInputChange = ({target: {name, value}}) => {
 }
   render() {
     const { cancelFormOpen } = this.props;
-<<<<<<< HEAD
-    const {  title, date, city, venue, hostedBy } = this.state;
-=======
     const { title, date, city, venue, hostedBy } = this.state;
->>>>>>> 6cfd7995147fcea1a50b98d35cd7a134bd4c942b
     return (
       <Segment>
         <Form onSubmit={this.handleFormSubmit} autoComplete='off'>

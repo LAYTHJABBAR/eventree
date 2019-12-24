@@ -1,10 +1,5 @@
 import React, { Fragment } from 'react';
-<<<<<<< HEAD
-import { Menu, Icon, Header } from 'semantic-ui-react';
-import { de } from 'date-fns/esm/locale';
-=======
 import { Menu, Header } from 'semantic-ui-react';
->>>>>>> 6cfd7995147fcea1a50b98d35cd7a134bd4c942b
 import { NavLink } from 'react-router-dom';
 
 const SettingsNav = () => {

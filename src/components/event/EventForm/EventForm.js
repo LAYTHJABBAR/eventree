@@ -7,18 +7,30 @@ export default class EventForm extends Component {
     date: '',
     city: '',
     venue:'',
-    hostBy:''
+    hostedBy:''
 
   };
+  componentDidMount() {
+    if (this.props.selectedEvent !== null) {
+      this.setState({
+        ...this.props.selectedEvent
+      })
+    }
+  }
   handleFormSubmit = eve => {
     eve.preventDefault();
-   this.props.createEvent(this.state);
+    if (this.state.id) {
+      this.props.updateEvent(this.state);
+    } else {
+
+      this.props.createEvent(this.state);
+    }
   };
-  handleTitleChange = eve => {
-    this.setState({
-      [eve.target.name]: eve.target.value
-    });
-  };
+handleInputChange = ({target: {name, value}}) => {
+  this.setState({
+    [name]: value
+  })
+}
   render() {
     const { cancelFormOpen } = this.props;
     const { title, date, city, venue, hostedBy } = this.state;
@@ -29,7 +41,7 @@ export default class EventForm extends Component {
             <label>Event Title</label>
             <input
             name = 'title'
-              onChange={this.handleTitleChange}
+              onChange={this.handleInputChange}
               value={title}
               placeholder="Event Title"
             />
@@ -38,7 +50,7 @@ export default class EventForm extends Component {
             <label>Event Date</label>
             <input
             name = 'date'
-            onChange={this.handleTitleChange}
+            onChange={this.handleInputChange}
             value={date} 
             type="date" 
             placeholder="Event Date" />
@@ -47,7 +59,7 @@ export default class EventForm extends Component {
             <label>City</label>
             <input 
             name = 'city'
-            onChange={this.handleTitleChange}
+            onChange={this.handleInputChange}
             value={city}
             placeholder="City event is taking place" />
           </Form.Field>
@@ -55,14 +67,14 @@ export default class EventForm extends Component {
             <label>Venue</label>
             <input 
             name = 'venue'
-              onChange={this.handleTitleChange}
+              onChange={this.handleInputChange}
               value={venue} placeholder="Enter the Venue of the event" />
           </Form.Field>
           <Form.Field>
             <label>Hosted By</label>
             <input
             name = 'hostedBy'
-            onChange={this.handleTitleChange}
+            onChange={this.handleInputChange}
             value={hostedBy}
              placeholder="Enter the name of person hosting" />
           </Form.Field>

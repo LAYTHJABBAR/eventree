@@ -7,12 +7,12 @@ export const HomePage = ({history}) => {
         <Container text>
           <Header as='h1' inverted>
             <Image
-              size='massive'
+              size='XLarge'
               src='/assets/eventree.png'
               alt='logo'
               style={{ marginBottom: 12 }}
             />
-            Eventree
+            
           </Header>
           <Button onClick={() => history.push('/events')} size='huge' inverted>
             Get started

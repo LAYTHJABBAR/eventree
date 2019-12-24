@@ -11,13 +11,7 @@ export default class EventForm extends Component {
     hostedBy: ""
   };
 
-  componentDidMount() {
-    if (this.props.selectedEvent !== null) {
-      this.setState({
-        ...this.props.selectedEvent
-      })
-    }
-  }
+  
 
 
 
@@ -52,7 +46,7 @@ handleInputChange = ({target: {name, value}}) => {
 }
   render() {
     const { cancelFormOpen } = this.props;
-    const { category, title, date, city, venue, hostedBy } = this.state;
+    const { title, date, city, venue, hostedBy } = this.state;
     return (
       <Segment>
         <Form onSubmit={this.handleFormSubmit} autoComplete='off'>

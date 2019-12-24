@@ -65,20 +65,21 @@ export default class EventDashboard extends Component {
   // handleIsOpenToggle = () => {
   //   this.setState(({ isOpen }) => ({
   //     isOpen: !isOpen
-  //   }))
-  // }
+  //   }));
+  // };
+
   handleCreateFormOpen = () => {
     this.setState({
       isOpen: true,
       selectedEvent: null
-    });
-  };
+    })
+  }
 
-  handleFormCancele = () => {  
+  handleFormCancel = () => {
     this.setState({
       isOpen: false
-    });
-  };
+    })
+  }
 
   handleCreateEvent = newEvent => {
     newEvent.id = cuid();
@@ -89,39 +90,42 @@ export default class EventDashboard extends Component {
       selectEvent: null
     }));
   };
-  handleSelectEvent = (  event) => {
+  
+
+  handleSelectEvent = (event) => {
     this.setState({
       selectedEvent: event,
       isOpen: true
-    });
-  };
-  handleUpdateEvent = updatedEvent => {
-    this.setState(({ event }) => ({
-      events: event.map(event => {
+    })
+  }
+
+  handleUpdateEvent = (updatedEvent) => {
+    this.setState(({events}) => ({
+      events: events.map(event => {
         if (event.id === updatedEvent.id) {
-          return { ...updatedEvent };
+          return {...updatedEvent}
         } else {
-          return event;
+          return event
         }
       }),
       isOpen: false,
       selectedEvent: null
+
     }))
   }
 
-handleDeleteEvent = (id) => {
-  this.setState(({events}) => ({
-    events: events.filter(e => e.id !== id)
-  }))
-}
+  handleDeleteEvent = (id) => {
+    this.setState(({ events }) => ({
+      events: events.filter(e => e.id !== id)
+    }))
+  }
+
   render() {
     const { events, isOpen, selectedEvent } = this.state;
     return (
       <Grid>
         <Grid.Column width={10}>
-          <EventList events={events} 
-          selectEvent={this.handleSelectEvent}
-          deleteEvent ={this.handleDeleteEvent} />
+          <EventList events={events} selectEvent={this.handleSelectEvent} deleteEvent={this.handleDeleteEvent}/>
         </Grid.Column>
         <Grid.Column width={6}>
           <Button
@@ -135,7 +139,7 @@ handleDeleteEvent = (id) => {
               updatedEvent={this.handleUpdateEvent}
               selectedEvent={selectedEvent}
               createEvent={this.handleCreateEvent}
-              cancelFormOpen={this.handleFormCancele}
+              cancelFormOpen={this.handleFormCancel}
             />
           )}
         </Grid.Column>

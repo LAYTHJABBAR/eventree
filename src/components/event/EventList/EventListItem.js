@@ -12,9 +12,9 @@ export default class EventListItem extends Component {
                   <Item>
                     <Item.Image size="tiny" oval src={this.props.event.hostPhotoURL} />
                     <Item.Content>
-                      <Item.Header as="a">{this.props.event.title}</Item.Header>
+                      <Item.Header> {this.props.event.title}</Item.Header>
                       <Item.Description>
-                        Hosted by <a href>{this.props.event.hostedBy}</a>
+                        Hosted by {this.props.event.hostedBy}
                       </Item.Description>
                     </Item.Content>
                   </Item>

@@ -74,7 +74,7 @@ export default class EventDashboard extends Component {
     });
   };
 
-  handleFormCancele = () => {
+  handleFormCancele = () => {  
     this.setState({
       isOpen: false
     });

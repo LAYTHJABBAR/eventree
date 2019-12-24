@@ -63,7 +63,7 @@ export default class EventDashboard extends Component {
   };
 
   handleIsOpenToggle = () => {
-    this.setState(({isOpen}) => ({
+    this.setState(({ isOpen }) => ({
       isOpen: !isOpen
     }))
   }

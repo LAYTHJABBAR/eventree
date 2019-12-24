@@ -14,7 +14,7 @@ export default class EventListItem extends Component {
                     <Item.Content>
                       <Item.Header >{this.props.event.title}</Item.Header>
                       <Item.Description>
-                        Hosted by <a href>{this.props.event.hostedBy}</a>
+                        Hosted by {this.props.event.hostedBy}
                       </Item.Description>
                     </Item.Content>
                   </Item>

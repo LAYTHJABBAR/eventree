@@ -8,7 +8,7 @@ export default class NavBar extends Component {
             <Menu inverted fixed="top">
               <Container>
                 <Menu.Item header>
-                  <img src="assets/eventree.png" alt="logo" />
+                  <img src="/assets/eventree.png" alt="logo" />
                   Eventree
                 </Menu.Item>
                 <Menu.Item name="Events List" />

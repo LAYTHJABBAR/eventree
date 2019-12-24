@@ -58,7 +58,8 @@ const eventsFromDashboard = [
 export default class EventDashboard extends Component {
   state = {
     events: eventsFromDashboard,
-    isOpen: false
+    isOpen: false,
+    selectedEvent: null
   };
 
   // handleIsOpenToggle = () => {
@@ -88,7 +89,7 @@ export default class EventDashboard extends Component {
       selectEvent: null
     }));
   };
-  handleSelectEvent = (eve, event) => {
+  handleSelectEvent = (  event) => {
     this.setState({
       selectedEvent: event,
       isOpen: true
@@ -132,7 +133,7 @@ handleDeleteEvent = (id) => {
             <EventForm
               key={selectedEvent ? selectedEvent.id : 0}
               updatedEvent={this.handleUpdateEvent}
-              selectEvent={selectedEvent}
+              selectedEvent={selectedEvent}
               createEvent={this.handleCreateEvent}
               cancelFormOpen={this.handleFormCancele}
             />

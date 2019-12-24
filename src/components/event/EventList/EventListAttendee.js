@@ -5,7 +5,7 @@ export default class EventListAttendee extends Component {
   render() {
     return (
       <List.Item>
-        <Image as='a' size='mini' oval src={this.props.attendee.photoURL} />
+        <Image as='a' size='mini' oval="true" src={this.props.attendee.photoURL} />
       </List.Item>
     )
   }

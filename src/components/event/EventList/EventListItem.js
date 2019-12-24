@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
-import EventListAttendee from '../EventList/EventListAttendee';
-
+import React, { Component } from "react";
+import { Segment, Item, Icon, List, Button } from "semantic-ui-react";
+import EventListAttendee from "../EventList/EventListAttendee";
 
 export default class EventListItem extends Component {
   render() {

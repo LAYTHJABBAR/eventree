@@ -83,12 +83,32 @@ export default class EventDashboard extends Component {
 
   handleCreateEvent = newEvent => {
     newEvent.id = cuid();
-    newEvent.hostPhotoURL = "/assets/user.png";
+    newEvent.hostPhotoURL = "/assets/usr.png";
     this.setState(({ events }) => ({
       events: [...events, newEvent],
-      isOpen: false
+      isOpen: false,
+      selectEvent: null
     }));
   };
+  handleSelectEvent = (eve, event) => {
+    this.setState({
+      selectedEvent: event,
+      isOpen: true
+    });
+  };
+  handleUpdateEvent = updatedEvent => {
+    this.setState(({ event }) => ({
+      events: event.map(event => {
+        if (event.id === updatedEvent.id) {
+          return { ...updatedEvent };
+        } else {
+          return event;
+        }
+      }),
+      isOpen: false,
+      selectedEvent: null
+    }))
+  }
 
   handleSelectEvent = (event) => {
     this.setState({

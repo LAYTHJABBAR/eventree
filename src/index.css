@@ -16,3 +16,47 @@ body {
 .main.segment {
   margin-top: 10em;
 }
+
+/*home page styles*/
+
+.masthead {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(
+          135deg,
+          rgb(31, 114, 89) 0%,
+          rgb(33, 138, 174) 69%,
+          rgb(32, 167, 172) 89%
+  ) !important;
+  height: 100vh;
+}
+
+/* .masthead.segment {
+  min-height: 700px;
+  padding: 1em 0 !important;
+} */
+
+.masthead .ui.menu .ui.button,
+.ui.menu a.ui.inverted.button {
+  margin-left: 0.5em;
+}
+
+.masthead h1.ui.header {
+  font-size: 4em;
+  font-weight: normal;
+}
+
+.masthead h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+/* .footer.segment {
+  padding: 5em 0;
+} */
+
+.secondary.inverted.pointing.menu {
+  border: none;
+}
+
+/*end home page styles*/

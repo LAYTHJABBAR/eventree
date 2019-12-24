@@ -1,13 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import EventDashboard from '../../components/event/EventDashboard/EventDashboard';
-import NavBar from '../../components/nav/NavBar/NavBar';
-import { Container } from 'semantic-ui-react';
+import React, { Component, Fragment } from "react";
+import EventDashboard from "../../components/event/EventDashboard/EventDashboard";
+import NavBar from "../../components/nav/NavBar/NavBar";
+import { Container } from "semantic-ui-react";
 
 class App extends Component {
-
-  
-  
-  render () {
+  render() {
     return (
       <Fragment>
         <NavBar />
@@ -15,13 +12,8 @@ class App extends Component {
           <EventDashboard />
         </Container>
       </Fragment>
-        
-
-      
     );
-
   }
 }
-
 
 export default App;

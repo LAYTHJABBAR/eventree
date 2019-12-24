@@ -12,7 +12,7 @@ export default class EventListItem extends Component {
                   <Item>
                     <Item.Image size="tiny" oval src={this.props.event.hostPhotoURL} />
                     <Item.Content>
-                      <Item.Header as="a">{this.props.event.title}</Item.Header>
+                      <Item.Header >{this.props.event.title}</Item.Header>
                       <Item.Description>
                         Hosted by <a href>{this.props.event.hostedBy}</a>
                       </Item.Description>
@@ -28,7 +28,7 @@ export default class EventListItem extends Component {
               </Segment>
               <Segment secondary>
                 <List horizontal>
-                  {this.props.event.attendees.map(attendee => (
+                  {this.props.event.attendees && this.props.event.attendees.map(attendee => (
                     <EventListAttendee key={attendee.id} attendee={attendee} />
 
                   ))}

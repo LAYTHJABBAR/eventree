@@ -115,9 +115,9 @@ export default class EventDashboard extends Component {
   }
 
   handleDeleteEvent = (id) => {
-    this.setState(({events}) => {
+    this.setState(({ events }) => ({
       events: events.filter(e => e.id !== id)
-    })
+    }))
   }
 
   render() {

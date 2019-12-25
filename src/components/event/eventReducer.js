@@ -75,3 +75,4 @@ export default createReducer(initialState, {
   [UPDATE_EVENT]: updateEvent,
   [DELETE_EVENT]: deleteEvent
 })
+

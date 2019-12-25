@@ -24,6 +24,7 @@ const mapState = (state, ownProps) => {
 };
 
 const actions = {
+  createEvent,
   updateEvent
 };
 
@@ -36,7 +37,7 @@ const validate = combineValidators({
   )(),
   city: isRequired('city'),
   venue: isRequired('venue'),
-  date: isRequired('date')
+  // date: isRequired('date')
 })
 
 const category = [

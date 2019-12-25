@@ -4,9 +4,9 @@ import NavBar from "../../components/nav/NavBar/NavBar";
 import { Container } from "semantic-ui-react";
 import { Route } from "react-router-dom";
 import { HomePage } from "../../components/home/HomePage";
-import { EventDetailPage } from "../../components/event/EventDetail/EventDetailPage";
-import { PeopleDashboard } from "../../components/user/PeopleDashboard/PeopleDashboard";
-import { UserDetailPage } from "../../components/user/UserDetail/UserDetailPage";
+import EventDetailPage  from "../../components/event/EventDetail/EventDetailPage";
+import  {PeopleDashboard}  from "../../components/user/PeopleDashboard/PeopleDashboard";
+import {UserDetailPage}  from "../../components/user/UserDetail/UserDetailPage";
 import SettingsDashboard from "../../components/user/Settings/SettingsDashboard";
 import EventForm from "../../components/event/EventForm/EventForm";
 

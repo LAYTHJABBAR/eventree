@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import { Grid } from 'semantic-ui-react'
 import EventDetailHeader from './EventDetailHeader'
 import EventDetailInfo  from './EventDetailInfo'
-import  EventDetailChat  from './EventDetailChat'
+import EventDetailChat  from './EventDetailChat'
 import EventDetailSideBar from './EventDetailSideBar';
 
 const mapState = (state, ownProps) => {

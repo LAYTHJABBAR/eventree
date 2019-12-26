@@ -121,3 +121,17 @@ body {
 .ui-circular-image {
   size: 100px;
 }
+
+ /* login styling  */
+
+  body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+
+    /* ============================= */

@@ -9,8 +9,8 @@ import cuid from 'cuid';
 import TextInput from '../../../app/common/form/TextInput';
 import TextArea from '../../../app/common/form/TextArea';
 import SelectInput from '../../../app/common/form/SelectInput';
-import DateInput from '../../../app/common/form/DateInput';
 import PlaceInput from '../../../app/common/form/PlaceInput';
+import DateInput from '../../../app/common/form/DateInput';
 
 const google = window.google;
 
@@ -42,7 +42,7 @@ const validate = combineValidators({
   )(),
   city: isRequired('city'),
   venue: isRequired('venue'),
-  // date: isRequired('date')
+  date: isRequired('date')
 })
 
 const category = [
@@ -162,11 +162,11 @@ class EventForm extends Component {
                 Submit
               </Button>
               <Button
-                onClick={
-                  initialValues.id
-                    ? () => history.push(`/events/${initialValues.id}`)
-                    : () => history.push('events')
-                }
+                   onClick={
+                    initialValues.id
+                      ? () => history.push(`/events/${initialValues.id}`)
+                      : () => history.push('events')
+                  }
                 type='button'
               >
                 Cancel

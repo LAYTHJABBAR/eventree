@@ -121,10 +121,12 @@ body {
 .ui-circular-image {
   size: 100px;
 }
-
+.drop-position {
+  margin-right: 0px;
+}
  /* login styling  */
 
-  body > .grid {
+  /* body > .grid {
       height: 100%;
     }
     .image {
@@ -132,6 +134,6 @@ body {
     }
     .column {
       max-width: 450px;
-    }
+    } */
 
     /* ============================= */

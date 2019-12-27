@@ -3,7 +3,7 @@ import { Segment, Container, Header, Image, Button, Icon } from 'semantic-ui-rea
 
 export const HomePage = ({history}) => {
   return (
-        <Segment inverted textAlign='center' vertical className='masthead'>
+        <Segment  textAlign='center' vertical className='masthead' inverted>
         <Container text>
           <Header as='h1' inverted>
             <Image

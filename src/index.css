@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(234, 234, 234) !important;
+  background-color: rgba(241, 202, 245, 0.329) !important;
 }
 
 /*timepicker style*/
@@ -24,10 +24,10 @@ body {
   display: flex;
   align-items: center;
   background-image: linear-gradient(
-          135deg,
-          rgb(24, 42, 115) 0%,
-          rgb(33, 138, 174) 69%,
-          rgb(32, 167, 172) 89%
+          113deg,
+          rgb(104, 5, 129) 0%,
+          rgb(116, 28, 151) 69%,
+          rgb(193, 13, 238) 89%
   ) !important;
   height: 100vh;
 }
@@ -71,9 +71,9 @@ body {
 .ui.fixed.menu {
   background-image: linear-gradient(
           135deg,
-          rgb(24, 42, 115) 0%,
-          rgb(33, 138, 174) 69%,
-          rgb(32, 167, 172) 89%
+          rgb(104, 5, 129) 0%,
+          rgb(116, 28, 151) 69%,
+          rgb(193, 13, 238) 89%
   ) !important;
 }
 
@@ -116,5 +116,24 @@ body {
 }
 
 .dropzone--isActive {
-  border: dashed 3px green;
+  border: dashed 3px rgb(10, 165, 10);
 }
+.ui-circular-image {
+  size: 100px;
+}
+.drop-position {
+  margin-right: 0px;
+}
+ /* login styling  */
+
+  /* body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    } */
+
+    /* ============================= */

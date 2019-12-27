@@ -9,7 +9,7 @@ import  {PeopleDashboard}  from "../../components/user/PeopleDashboard/PeopleDas
 import {UserDetailPage}  from "../../components/user/UserDetail/UserDetailPage";
 import SettingsDashboard from "../../components/user/Settings/SettingsDashboard";
 import EventForm from "../../components/event/EventForm/EventForm";
-
+import ModalManager from '../../components/Modals/ModalManager'
 class App extends Component {
   render() {
     return (
@@ -18,6 +18,7 @@ class App extends Component {
         <Route path='/(.+)' 
         render={() => (
           <Fragment>
+            <ModalManager />
             <NavBar />
             <Container className="main">
               <Switch key = {this.props.location.key}>

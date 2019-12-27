@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import { Provider } from 'react-redux';
+
 import './index.css';
 import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import { configureStore } from './app/store/configureStore';
+import configureStore from './app/store/configureStore';
 import ScrollToTop from "./app/common/util/ScrollToTop"
-import { loadEvents } from './components/event/eventActions';
+
 const store = configureStore();
-store.dispatch(loadEvents())
+
 const rootElement = document.getElementById('root');
+
 
 
 let render = () => {

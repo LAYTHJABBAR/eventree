@@ -9,7 +9,7 @@ import cuid from 'cuid';
 import TextInput from '../../../app/common/form/TextInput';
 import TextArea from '../../../app/common/form/TextArea';
 import SelectInput from '../../../app/common/form/SelectInput';
-import DateInput from '../../../app/common/form/DateInput';
+import DatePicker from '../../../app/common/form/DateInput';
 import PlaceInput from '../../../app/common/form/PlaceInput';
 
 const google = window.google;
@@ -151,12 +151,10 @@ class EventForm extends Component {
                 placeholder='Event venue'
               />
               <Field
-                name='date'
-                component={DateInput}
-                dateFormat='dd LLL yyyy h:mm a'
-                placeholder='Event date'
-                showTimeSelect
-                timeFormat='HH:mm'
+              name='date'
+              component={DatePicker}
+              placeholder='Event Date'
+                
               />
               <Button disabled={invalid || submitting || pristine} positive type='submit'>
                 Submit

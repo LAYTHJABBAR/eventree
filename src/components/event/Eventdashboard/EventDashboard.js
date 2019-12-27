@@ -4,10 +4,11 @@ import {connect} from 'react-redux';
 import EventList from "../EventList/EventList";
 
 import {createEvent, updateEvent, deleteEvent} from '../eventActions';
+import { firestoreConnect } from "react-redux-firebase";
 
 
 const mapState = (state) => ({
-  events: state.events
+  events: state.firestore.ordered
 })
 
 const actions = {
@@ -18,16 +19,6 @@ const actions = {
 
 
 class EventDashboard extends Component {
-
-
-  // handleCreateEvent = newEvent => {
-  //   newEvent.id = cuid();
-  //   newEvent.hostPhotoURL = "/assets/usr.png";
-  //   this.props.createEvent(newEvent);
-  // };
-  
-
- 
 
   handleDeleteEvent = id => {
     this.props.deleteEvent(id);
@@ -49,4 +40,4 @@ class EventDashboard extends Component {
   }
 }
 
-export default connect(mapState, actions)(EventDashboard);
+export default connect(mapState, actions) (firestoreConnect([{collection: 'events'}]) (EventDashboard));

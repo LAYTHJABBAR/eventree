@@ -16,8 +16,6 @@ const store = configureStore();
  
 const rootElement = document.getElementById('root');
 
-
-
 let render = () => {
   ReactDOM.render(
     <Provider store={store}>
@@ -41,9 +39,9 @@ if (module.hot) {
   })
 }
 
-store.firebaseAuthIsReady.then(() => {
-  render();
-})
+
+render();
+
 
 
 // If you want your app to work offline and load faster, you can change

@@ -8,18 +8,24 @@ import AboutPage from './AboutPage';
 import PhotosPage from './PhotosPage';
 import AccountPage from './AccountPage';
 import { updatePassword } from '../../authantication/authActions';
+import { updateProfile } from '../../user/UserActions';
 
 const actions = {
-  updatePassword
+  updatePassword,
+  updateProfile
 }
 
-const SettingsDashboard = ({updatePassword}) => {
+const mapState = (state) =>  ({
+  user: state.firebase.profile
+})
+
+const SettingsDashboard = ({ updatePassword, user, updateProfile }) => {
   return (
     <Grid>
       <Grid.Column width={12}>
         <Switch>
           <Redirect exact from='/settings' to='/settings/basic' />
-          <Route path='/settings/basic' component={BasicPage} />
+          <Route path='/settings/basic' render ={() => (<BasicPage initialValues={user} updateProfile={updateProfile} />)}/>
           <Route path='/settings/about' component={AboutPage} />
           <Route path='/settings/photos' component={PhotosPage} />
           <Route path='/settings/account' render={() => <AccountPage updatePassword={updatePassword} />} />
@@ -32,4 +38,4 @@ const SettingsDashboard = ({updatePassword}) => {
   )
 }
 
-export default connect(null, actions)(SettingsDashboard)
+export default connect(mapState, actions)(SettingsDashboard)

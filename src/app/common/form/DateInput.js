@@ -8,12 +8,12 @@ const DateInput = ({input, width, placeholder, meta: {touched, error}, ...rest})
     return (
         <Form.Field error={touched && !!error}>
             <DatePicker
-                {...rest}
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-                timeInputLabel='Time:'
-                dateFormat='MM/dd/yyyy h:mm aa'
-                showTimeInput
+                 {...rest}
+                 placeholderText={placeholder}
+                 selected={input.value ? new Date(input.value) : null}
+                 onChange={input.onChange}
+                 onBlur={input.onBlur}
+                 onChangeRaw={(e) => e.preventDefault()}
             />
             {touched && error &&<Label basic color='red'>{error}</Label>}
         </Form.Field>

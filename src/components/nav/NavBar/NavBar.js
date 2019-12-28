@@ -7,17 +7,13 @@ import SignedOutMenu from '../Menus/SignedOutMenu';
 import SignedInMenu from '../Menus/SignedInMenu';
 import { openModal } from '../../Modals/modalActions';
 
-
-
+const actions = {
+  openModal,
+}
 
 const mapState = (state) => ({
   auth: state.firebase.auth
 })
-
-const actions = {
-  openModal
-}
-
 class NavBar extends Component {
   handleSignIn = () => {
     this.props.openModal('LoginModal');

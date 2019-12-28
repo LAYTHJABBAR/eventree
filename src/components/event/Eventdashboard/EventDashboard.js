@@ -1,32 +1,35 @@
 import React, { Component } from "react";
 import { Grid } from "semantic-ui-react";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import EventList from "../EventList/EventList";
 
-import {createEvent, updateEvent, deleteEvent} from '../eventActions';
+import { createEvent, updateEvent, deleteEvent } from "../eventActions";
 import { firestoreConnect } from "react-redux-firebase";
 
-
-const mapState = (state) => ({
-  events: state.firestore.ordered
-})
+const mapState = state => ({
+  events: state.firestore.ordered.events,
+  loading: state.async.loading
+});
 
 const actions = {
   createEvent,
   updateEvent,
   deleteEvent
-}
-
+};
 
 class EventDashboard extends Component {
+  // handleCreateEvent = newEvent => {
+  //   newEvent.id = cuid();
+  //   newEvent.hostPhotoURL = "/assets/usr.png";
+  //   this.props.createEvent(newEvent);
+  // };
 
   handleDeleteEvent = id => {
     this.props.deleteEvent(id);
-  }
+  };
 
   render() {
-
-    const {events} = this.props;
+    const { events } = this.props;
     return (
       <Grid>
         <Grid.Column width={10}>
@@ -40,4 +43,7 @@ class EventDashboard extends Component {
   }
 }
 
-export default connect(mapState, actions) (firestoreConnect([{collection: 'events'}]) (EventDashboard));
+export default connect(
+  mapState,
+  actions
+)(firestoreConnect([{ collection: "events" }])(EventDashboard));

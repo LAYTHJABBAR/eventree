@@ -6,7 +6,7 @@ import { Form, Segment, Button } from 'semantic-ui-react';
 const RegisterForm = () => {
   return (
     <div>
-      <Form size="large">
+      <Form size="large" autoComplete='off'>
         <Segment>
           <Field
             name="displayName"

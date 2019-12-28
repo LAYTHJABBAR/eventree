@@ -16,7 +16,7 @@ class RegisterModal extends Component {
                 onClose={this.props.closeModal}
             >
                 <Modal.Header>
-                    Sign Up to Eventree!
+                    Sign Up to Eventree
                 </Modal.Header>
                 <Modal.Content>
                     <Modal.Description>

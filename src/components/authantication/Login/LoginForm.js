@@ -11,7 +11,7 @@ const actions = {
 
 const LoginForm = ({login, handleSubmit, error}) => {
   return (
-    <Form size="large" onSubmit={handleSubmit(login)} autoComplete='off'>
+    <Form  size="large" onSubmit={handleSubmit(login)} autoComplete='off'>
       <Segment>
         <Field
           name="email"
@@ -25,7 +25,12 @@ const LoginForm = ({login, handleSubmit, error}) => {
           type="password"
           placeholder="password"
         />
-        {error && <Label basic color='red'>{error}</Label>}
+        {error === `The email address is badly formatted.` && <Label basic color='red'>No User Under this Email</Label>}
+        {error === `There is no user record corresponding to this identifier. The user may have been deleted.` && <Label basic color='red'>No User Under this Email</Label>}
+        {error === `signInWithEmailAndPassword failed: Second argument "password" must be a valid string.` && <Label basic color='red'>Wrong password</Label>}
+        {error === `signInWithEmailAndPassword failed: First argument "email" must be a valid string.` && <Label basic color='red'>Please enter a valid Email</Label>}
+
+        
         <Button fluid size="large" color="purple">
           Login
         </Button>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { withFirebase } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import {withFirebase} from 'react-redux-firebase'
 import { Menu, Container, Button } from 'semantic-ui-react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import SignedOutMenu from '../Menus/SignedOutMenu';
@@ -11,8 +11,7 @@ import { openModal } from '../../Modals/modalActions';
 
 
 const mapState = (state) => ({
-  auth: state.firebase.auth,
-  profile: state.firebase.profile
+  auth: state.firebase.auth
 })
 
 const actions = {
@@ -34,7 +33,7 @@ class NavBar extends Component {
   } 
 
   render() {
-    const { auth, profile } = this.props;
+    const { auth } = this.props;
     const authenticated = auth.isLoaded && !auth.isEmpty;
     return (
       <Menu inverted fixed='top'>
@@ -56,7 +55,7 @@ class NavBar extends Component {
             />
           </Menu.Item>
           {authenticated ? (
-            <SignedInMenu signOut={this.handleSignOut} profile={profile} />
+            <SignedInMenu signOut={this.handleSignOut} auth={auth} />
           ) : (
             <SignedOutMenu signIn={this.handleSignIn} register={this.handleRegister} />
           )}
@@ -66,10 +65,4 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(withFirebase(
-  connect(
-    mapState,
-    actions
-  )(NavBar)
-)
-);
+export default withRouter(withFirebase(connect(mapState, actions)(NavBar)));

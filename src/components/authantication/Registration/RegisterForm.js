@@ -14,11 +14,7 @@ const actions = {
 const RegisterForm = (handleSubmit, registerUser) => {
   return (
     <div>
-       <Form
-        size='large'
-        autoComplete='off'
-        onSubmit={handleSubmit(registerUser)}
-      >
+      <Form size="large" autoComplete='off'>
         <Segment>
           <Field
             name="displayName"

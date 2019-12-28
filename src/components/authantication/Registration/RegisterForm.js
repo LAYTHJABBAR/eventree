@@ -1,12 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm} from 'redux-form';
 import TextInput from '../../../app/common/form/TextInput';
 import { Form, Segment, Button } from 'semantic-ui-react';
+import {registerUser} from "../authActions";
 
-const RegisterForm = () => {
+const actions = {
+  registerUser
+}
+const RegisterForm = ({handleSubmit, registerUser}) => {
   return (
     <div>
-      <Form size="large" autoComplete='off'>
+      <Form size="large" onSubmit={handleSubmit(registerUser)}>
         <Segment>
           <Field
             name="displayName"
@@ -35,4 +40,4 @@ const RegisterForm = () => {
   );
 };
 
-export default reduxForm({form: 'RegisterForm'})(RegisterForm);
+export default connect(null, actions)(reduxForm({form: 'RegisterForm'})(RegisterForm));

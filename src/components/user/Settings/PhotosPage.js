@@ -1,49 +1,75 @@
-import React, {Component} from 'react';
-import {Image, Segment, Header, Divider, Grid, Button, Card} from 'semantic-ui-react';
-import MyDropzone from './dropPhoto';
-class PhotosPage extends Component {
-    render() {
-        return (
-            <Segment>
-                <Header dividing size='large' content='Your Photos' />
-                <Grid.Row>
-                    <Grid.Row width={4}>
-                        <Header color='purple' sub content='Step 1 - Add Photo'/>
-                        <MyDropzone />
-                    </Grid.Row>
-                    <Divider/>
-                    <Grid.Row width={1} />
-                    <Grid.Row width={4}>
-                        <Header sub color='purple' content='Step 2 - Resize image' />
-                    </Grid.Row>
-                    <Divider/>
-                    <Grid.Row width={1} />
-                    <Grid.Row width={4}>
-                        <Header sub color='purple' content='Step 3 - Preview and Upload' />
-                    </Grid.Row>
-                </Grid.Row>
+import React, { useState, useEffect } from "react";
+import {
+  Image,
+  Segment,
+  Header,
+  Divider,
+  Grid,
+  Button,
+  Card
+} from "semantic-ui-react";
+import MyDropzone from "./Mydropzone";
+import CropperPhoto from './Cropper'
 
-                <Divider/>
-                <Header sub color='purple' content='All Photos'/>
+const PhotosPage = () => {
+  const [files, setFiles] = useState([]);
+  const [image, setImage] = useState(null);
+  useEffect(() => {
+    return () => {
+      files.forEach(file => URL.revokeObjectURL(file.preview));
+    };
+  }, [files]);
+  return (
+    <Segment>
+      <Header dividing size="large" content="Your Photos" />
+      <Grid.Row>
+        <Grid.Row width={4}>
+          <Header color="purple" sub content="Step 1 - Add Photo" />
+          <MyDropzone setFiles={setFiles} />
+        </Grid.Row>
+        <Divider />
+        <Grid.Row width={1} />
+        <Grid.Row width={4}>
+          <Header sub color="purple" content="Step 2 - Resize image" />
+          {files.length > 0 && 
+          <CropperPhoto setImage={setImage} imagePreview={files[0].preview}/>}
+        </Grid.Row>
+        <Divider />
+        <Grid.Row width={1} />
+        <Grid.Row width={4}>
+          <Header sub color="purple" content="Step 3 - Preview & Upload" />
+          {files.length > 0 && (
+            <div
+            className='img-preview'
+              style={{ maxHeight: "500px", maxWidth: "700px", overflow: 'hidden' }}
+            />
+          )}
+        </Grid.Row>
+      </Grid.Row>
 
-                <Card.Group itemsPerRow={5}>
-                    <Card color='purple'>
-                        <Image class="ui medium circular image" src='https://avatars1.githubusercontent.com/u/53024934?s=400&u=6684d46467fa56968ac0616196cea1ee338302b0&v=4'/>
-                        <Button color='purple'>Main Photo</Button>
-                    </Card>
+      <Divider />
+      <Header sub color="purple" content="All Photos" />
 
-                        <Card color='purple'>
-                            <Image
-                                src='https://avatars1.githubusercontent.com/u/53024934?s=400&u=6684d46467fa56968ac0616196cea1ee338302b0&v=4'
-                            />
-                            <div className='ui two buttons'>
-                                <Button basic color='purple'>Main</Button>
-                                <Button basic icon='trash' color='red' />
-                            </div>
-                        </Card>
-                </Card.Group>
-            </Segment>
-        );
-    }
-}
+      <Card.Group itemsPerRow={5}>
+        <Card color="purple">
+          <Image
+            class="ui medium circular image"
+            src="https://avatars1.githubusercontent.com/u/53024934?s=400&u=6684d46467fa56968ac0616196cea1ee338302b0&v=4"
+          />
+          <Button color="purple">Main Photo</Button>
+        </Card>
+
+        <Card color="purple">
+          <Image src="https://avatars1.githubusercontent.com/u/53024934?s=400&u=6684d46467fa56968ac0616196cea1ee338302b0&v=4" />
+          <div className="ui two buttons">
+            <Button basic color="purple">
+              Main
+            </Button>
+            <Button basic icon="trash" color="red" />
+          </div>
+        </Card>
+      </Card.Group>
+    </Segment>
+  );
+};
 export default PhotosPage;

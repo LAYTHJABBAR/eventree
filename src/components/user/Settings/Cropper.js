@@ -19,15 +19,15 @@ class Cropperphoto extends Component {
       <Cropper
         ref= {this.cropper}
         src={imagePreview}
-        style={{height: 600, width: '100%'}}
-        preview = ".image-preview"
+        style={{height: 450, width: '100%'}}
+        preview = ".img-preview"
         aspectRatio={1}
-        viewMode={1}
+        viewMode={0}
         dragMode='move'
+        guides= {false}
         scalable={true}
         cropBoxMovable={true}
         cropBoxResizable={true}
-        guides={false}
         crop={this.cropImage} />
     );
   }

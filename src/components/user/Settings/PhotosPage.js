@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import {
-  Image,
   Segment,
   Header,
   Divider,
@@ -63,9 +62,9 @@ const PhotosPage = ({
     try {
       await uploadProfileImage(image, files[0].name);
       handleCancelCrop();
-      toastr.success("Success", "Photo has been uploaded");
+      toastr.success("Success", "Photo uploaded");
     } catch (error) {
-      toastr.error("Oops", "Something went wrong");
+      toastr.error("Fail", "Something went wrong");
     }
   };
 
@@ -79,7 +78,7 @@ const PhotosPage = ({
     try {
       await setMainPhoto(photo);
     } catch (error) {
-      toastr.error("Oops", error.message);
+      toastr.error("Fail", error.message);
     }
   };
 
@@ -87,7 +86,7 @@ const PhotosPage = ({
     try {
       await deletePhoto(photo);
     } catch (error) {
-      toastr.error("Oops", error.message);
+      toastr.error("Fail", error.message);
     }
   };
 
@@ -110,7 +109,6 @@ const PhotosPage = ({
               setImage={setImage}
             />
           )}
-
           {files.length > 0 && (
             <Fragment>
               <Button.Group>

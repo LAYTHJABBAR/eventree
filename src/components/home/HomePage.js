@@ -7,7 +7,6 @@ export const HomePage = ({history}) => {
         <Container text>
           <Header as='h1' inverted>
             <Image
-              size='XLarge'
               src='/assets/eventree.png'
               alt='logo'
               style={{ marginBottom: 12 }}

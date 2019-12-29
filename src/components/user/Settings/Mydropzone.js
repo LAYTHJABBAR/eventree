@@ -26,16 +26,16 @@ const MyDropzone = ({ setFiles }) => {
       <input {...getInputProps()} />
       {isDragActive ? (
         <div className="dropZone1">
-          <p>
-            <h3>Drop the photo here </h3>
-          </p>
+          <h3><p>
+            Drop the photo here 
+          </p></h3>
           <Icon className="picture" size="huge"></Icon>
         </div>
       ) : (
         <div className="dropZone textup">
-          <p>
-            <h3>Drag and drop the photo here, or click to select it </h3>{" "}
-          </p>
+          <h3><p>
+            Drag and drop the photo here, or click to select it 
+          </p></h3>
           <Icon className="upload" size="huge"></Icon>
         </div>
       )}

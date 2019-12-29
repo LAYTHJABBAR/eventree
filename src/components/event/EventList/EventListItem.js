@@ -12,7 +12,7 @@ export default class EventListItem extends Component {
               <Segment>
                 <Item.Group>
                   <Item>
-                    <Item.Image size="tiny" oval src={event.hostPhotoURL} />
+                    <Item.Image size="tiny"  src={event.hostPhotoURL} />
                     <Item.Content>
                       
                       <Item.Header> {event.title}</Item.Header>

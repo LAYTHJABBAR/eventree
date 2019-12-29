@@ -107,33 +107,25 @@ body {
 }
 
 /* dropzone styles */
-.dropzone {
-  border: dashed 3px #eee;
+.dropZone {
+  border: dashed 3px rgb(229, 196, 252);
+  border-radius: 5px;
+  padding-top: 30px;
+  text-align: center;
+  
+  /* min-height: 236px; */
+}
+.dropZone1 {
+  border: solid 3px rgb(2, 196, 67);
   border-radius: 5px;
   padding-top: 30px;
   text-align: center;
   /* min-height: 236px; */
 }
 
-.dropzone--isActive {
-  border: dashed 3px rgb(10, 165, 10);
-}
 .ui-circular-image {
   size: 100px;
 }
 .drop-position {
   margin-right: 0px;
 }
- /* login styling  */
-
-  /* body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-    } */
-
-    /* ============================= */

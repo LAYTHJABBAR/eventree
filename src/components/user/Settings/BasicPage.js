@@ -55,7 +55,6 @@ class BasicPage extends Component {
                         name='city'
                         placeholder='Home Town'
                         options={{types: ['(cities)']}}
-                        label='Female'
                         component={PlaceInput}
                         width={8}
                     />

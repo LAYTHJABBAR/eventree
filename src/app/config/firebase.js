@@ -12,7 +12,7 @@ const firebaseConfig = {
   storageBucket: "eventree-263123.appspot.com",
   messagingSenderId: "807443856072",
   appId: "1:807443856072:web:257ade881944a19a85c3fd",
-  timetimestampsInSnapshots: true
+  timetimestampsInSnapshots: false
 };
   firebase.initializeApp(firebaseConfig)
   firebase.firestore();

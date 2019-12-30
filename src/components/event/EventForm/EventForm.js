@@ -5,7 +5,6 @@ import {geocodeByAddress, getLatLng} from 'react-places-autocomplete'
 import {combineValidators, composeValidators, isRequired, hasLengthGreaterThan} from 'revalidate';
 import { Segment, Form, Button, Grid, Header } from 'semantic-ui-react';
 import { createEvent, updateEvent } from '../eventActions';
-import cuid from 'cuid';
 import TextInput from '../../../app/common/form/TextInput';
 import TextArea from '../../../app/common/form/TextArea';
 import SelectInput from '../../../app/common/form/SelectInput';
@@ -59,23 +58,23 @@ class EventForm extends Component {
     cityLatLng: {},
     venueLatLng: {}
   }
-
-  onFormSubmit = values => {
+  
+  onFormSubmit = async values => {
     values.venueLatLng = this.state.venueLatLng;
-    if (this.props.initialValues.id) {
-      this.props.updateEvent(values);
-      this.props.history.push(`/events/${this.props.initialValues.id}`);
-    } else {
-      const newEvent = {
-        ...values,
-        id: cuid(),
-        hostPhotoURL: '/assets/user.png',
-        hostedBy: 'Bob'
-      };
-      this.props.createEvent(newEvent);
-      this.props.history.push(`/events/${newEvent.id}`);
+    try {
+      if (this.props.initialValues.id) {
+        this.props.updateEvent(values);
+        this.props.history.push(`/events/${this.props.initialValues.id}`);
+      } else {
+        let createdEvent = await this.props.createEvent(values);
+        this.props.history.push(`/events/${createdEvent.id}`);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
+
 
   handleCitySelect = selectedCity => {
     geocodeByAddress(selectedCity)
@@ -150,7 +149,7 @@ class EventForm extends Component {
                 onSelect={this.handleVenueSelect}
                 placeholder='Event venue'
               />
-              <Field
+                <Field
                 name='date'
                 component={DateInput}
                 dateFormat='dd LLL yyyy h:mm a'

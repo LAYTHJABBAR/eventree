@@ -1,8 +1,4 @@
-import {
-  UPDATE_EVENT,
-  DELETE_EVENT,
-  FETCH_EVENTS
-} from "./eventConstants";
+import { UPDATE_EVENT, DELETE_EVENT, FETCH_EVENTS } from "./eventConstants";
 import { toastr } from "react-redux-toastr";
 import { fetchSampleData } from "../../app/data/mockApi";
 import {
@@ -20,27 +16,30 @@ export const createEvent = event => {
     const photoURL = getState().firebase.profile.photoURL;
     const newEvent = createNewEvent(user, photoURL, event);
     try {
-      let createdEvent = await firestore.add('events', newEvent);
+      let createdEvent = await firestore.add("events", newEvent);
       await firestore.set(`event_attendee/${createdEvent.id}_${user.uid}`, {
         eventId: createdEvent.id,
         userUid: user.uid,
         eventDate: event.date,
         host: true
       });
-      toastr.success('Success!', 'Event has been created');
+      toastr.success("Success!", "Event has been created");
       return createdEvent;
     } catch (error) {
-      console.log(error)
-      toastr.error('Oops', 'Something went wrong');
+      console.log(error);
+      toastr.error("Oops", "Something went wrong");
     }
   };
 };
 
 export const updateEvent = event => {
-  return {
-    type: UPDATE_EVENT,
-    payload: {
-      event
+  return async (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    try {
+      await firestore.update(`events/${event.id}`, event);
+      toastr.success("done", "event updated");
+    } catch (error) {
+      toastr.error("fail", "try again");
     }
   };
 };

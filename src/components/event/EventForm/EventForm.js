@@ -10,6 +10,7 @@ import TextArea from '../../../app/common/form/TextArea';
 import SelectInput from '../../../app/common/form/SelectInput';
 import PlaceInput from '../../../app/common/form/PlaceInput';
 import DateInput from '../../../app/common/form/DateInput';
+import { withFirestore } from 'react-redux-firebase';
 
 const google = window.google;
 
@@ -18,10 +19,14 @@ const mapState = (state, ownProps) => {
 
   let event = {};
 
-  if (eventId && state.events.length > 0) {
-    event = state.events.filter(event => event.id === eventId)[0];
+  if (
+    state.firestore.ordered.events &&
+    state.firestore.ordered.events.length > 0
+  ) {
+    event = state.firestore.ordered.events.filter(
+      event => event.id === eventId
+    )[0] || {}
   }
-
   return {
     initialValues: event
   };
@@ -57,6 +62,18 @@ class EventForm extends Component {
   state = {
     cityLatLng: {},
     venueLatLng: {}
+  }
+
+  async componentDidMount() {
+    const { firestore, match, history } = this.props;
+    let event = await firestore.get(`events/${match.params.id}`);
+    if (!event.exists) {
+      history.push("/events");
+    }else{
+      this.setState({
+        venueLatLng: event.data().venueLatLng
+      })
+    }
   }
   
   onFormSubmit = async values => {
@@ -178,7 +195,7 @@ class EventForm extends Component {
   }
 }
 
-export default connect(
+export default withFirestore(connect(
   mapState,
   actions
-)(reduxForm({ form: 'eventForm', validate })(EventForm));
+)(reduxForm({ form: 'eventForm', validate, enableReinitialize: true })(EventForm)));

@@ -34,9 +34,10 @@ const EventDetailHeader = ({event, isHost, isGoing, goingToEvent, cancelGoingToE
                   content={event.title}
                   style={{ color: "white" }}
                 />
-                <p>{event.date}</p>
+                <p style={{color: 'yellow'}}>{event.date}</p>
                 <p>
-                  Hosted by <strong>{event.hostedBy}</strong>
+                  Hosted by <strong>
+                    <Link to={`/profile/${event.hostUid}`} style={{color: 'red'}}>{event.hostedBy}</Link></strong>
                 </p>
               </Item.Content>
             </Item>

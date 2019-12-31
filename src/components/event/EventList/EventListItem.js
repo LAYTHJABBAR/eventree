@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Segment, Item, Icon, List, Button, Label } from "semantic-ui-react";
 import EventListAttendee from "../EventList/EventListAttendee";
 import { Link } from "react-router-dom";
+import { objectToArray } from "../../../app/common/util/helpers";
 
 
 export default class EventListItem extends Component {
@@ -15,9 +16,9 @@ export default class EventListItem extends Component {
                     <Item.Image size="tiny"  src={event.hostPhotoURL} />
                     <Item.Content>
                       
-                      <Item.Header> {event.title}</Item.Header>
+                      <Item.Header as={Link} to={`/events/${event.id}`}> {event.title}</Item.Header>
                       <Item.Description>
-                        Hosted by {event.hostedBy}
+                        Hosted by <Link  as={Link} to={`/profile/${event.hostUid}`} style={{color: 'red'}}>{event.hostedBy}</Link>
                       </Item.Description>
                       { event.cancelled && 
                       <Label style={{top:'8px', right: '0px'}} size ='meduim' tag='right' color='red' content='Event Cancelled' />}
@@ -35,8 +36,8 @@ export default class EventListItem extends Component {
               <Segment secondary>
                 <List horizontal>
                   {event.attendees && 
-                  Object.values(event.attendees).map((attendee, index) => (
-                    <EventListAttendee key={index} attendee={attendee} />
+                 objectToArray(event.attendees).map((attendee) => (
+                    <EventListAttendee key={attendee.id} attendee={attendee} />
 
                   ))}
                   

@@ -6,7 +6,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import { HomePage } from "../../components/home/HomePage";
 import EventDetailPage  from "../../components/event/EventDetail/EventDetailPage";
 import  {PeopleDashboard}  from "../../components/user/PeopleDashboard/PeopleDashboard";
-import UserDetailPage from "../../components/user/UserDetail/UserDetailPage"
+import UserDetailedPage from "../../components/user/UserDetail/UserDetailedPage"
 import SettingsDashboard from "../../components/user/Settings/SettingsDashboard";
 import EventForm from "../../components/event/EventForm/EventForm";
 import ModalManager from '../../components/Modals/ModalManager'
@@ -25,7 +25,7 @@ class App extends Component {
                 <Route exact path='/events' component={EventDashboard}/>
                 <Route path='/events/:id' component={EventDetailPage}/>
                 <Route path='/people' component={PeopleDashboard}/>
-                <Route path='/profile/:id' component={UserDetailPage}/>
+                <Route path='/profile/:id' component={UserDetailedPage}/>
                 <Route path='/settings' component={SettingsDashboard}/>
                 <Route path={['/createEvent', '/manage/:id']} component={EventForm}/>         
               </Switch>     

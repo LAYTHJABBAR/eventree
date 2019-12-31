@@ -13,7 +13,7 @@ const UserDetailedPhotos = ({ photos }) => {
             <LazyLoad
               key={photo.id}
               height={150}
-              placeholder={<Image src='/assets/user.png' />}
+              placeholder={<Image key={photo.id} src='/assets/user.png' />}
             >
               <Image src={photo.url} />
             </LazyLoad>

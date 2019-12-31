@@ -1,4 +1,4 @@
-import { UPDATE_EVENT, DELETE_EVENT, FETCH_EVENTS } from "./eventConstants";
+import { FETCH_EVENTS } from "./eventConstants";
 import { toastr } from "react-redux-toastr";
 import { fetchSampleData } from "../../app/data/mockApi";
 import {
@@ -44,14 +44,17 @@ export const updateEvent = event => {
   };
 };
 
-export const deleteEvent = eventId => {
-  return {
-    type: DELETE_EVENT,
-    payload: {
-      eventId
-    }
-  };
-};
+export const cancelToggle = (cancelled, eventId) =>
+async (dispatch, getState, {getFirestore}) => {
+  const firestore = getFirestore();
+  try {
+await firestore.update(`events/${eventId}`, {
+  cancelled: cancelled
+})
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const loadEvents = () => {
   return async dispatch => {

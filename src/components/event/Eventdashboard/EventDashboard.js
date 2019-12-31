@@ -3,7 +3,7 @@ import { Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
 import EventList from "../EventList/EventList";
 
-import { createEvent, updateEvent, deleteEvent } from "../eventActions";
+import { createEvent, updateEvent } from "../eventActions";
 import { firestoreConnect } from "react-redux-firebase";
 
 const mapState = state => ({
@@ -14,7 +14,6 @@ const mapState = state => ({
 const actions = {
   createEvent,
   updateEvent,
-  deleteEvent
 };
 
 class EventDashboard extends Component {

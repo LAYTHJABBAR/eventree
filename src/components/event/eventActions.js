@@ -27,7 +27,7 @@ export const createEvent = event => {
       return createdEvent;
     } catch (error) {
       console.log(error);
-      toastr.error("Oops", "Something went wrong");
+      toastr.error("Fail", "Something went wrong while creating an event");
     }
   };
 };

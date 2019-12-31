@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Segment, Grid, Icon, Button } from 'semantic-ui-react';
 import EventDetailedMap from '../EventDetail/EventDetailMap';
+import { format } from 'date-fns';
 
-
-const EventDetailedInfo = ({ event }) => {
+const EventDetailInfo = ({ event }) => {
   const [isMapOpen, showMapToggle] = useState(false);
   return (
     <Segment.Group>
       <Segment attached='top'>
         <Grid>
           <Grid.Column width={1}>
-            <Icon size='large' color='black' name='info' />
+            <Icon size='large' color='teal' name='info' />
           </Grid.Column>
           <Grid.Column width={15}>
             <p>{event.description}</p>
@@ -20,17 +20,21 @@ const EventDetailedInfo = ({ event }) => {
       <Segment attached>
         <Grid verticalAlign='middle'>
           <Grid.Column width={1}>
-            <Icon name='calendar' size='large' color='black' />
+            <Icon name='calendar' size='large' color='teal' />
           </Grid.Column>
           <Grid.Column width={15}>
-            <span>{event.date}</span>
+            {event.date &&
+            <span>
+              {format(event.date.toDate(), 'EEEE do LLL')} at{' '}
+              {format(event.date.toDate(), 'h:mm a')}
+            </span>}
           </Grid.Column>
         </Grid>
       </Segment>
       <Segment attached>
         <Grid verticalAlign='middle'>
           <Grid.Column width={1}>
-            <Icon name='marker' size='large' color='black' />
+            <Icon name='marker' size='large' color='teal' />
           </Grid.Column>
           <Grid.Column width={11}>
             <span>{event.venue}</span>
@@ -38,7 +42,7 @@ const EventDetailedInfo = ({ event }) => {
           <Grid.Column width={4}>
             <Button
               onClick={() => showMapToggle(!isMapOpen)}
-              color='purple'
+              color='teal'
               size='tiny'
               content={isMapOpen ? 'Hide map' : 'Show map'}
             />
@@ -55,4 +59,4 @@ const EventDetailedInfo = ({ event }) => {
   );
 };
 
-export default EventDetailedInfo;
+export default EventDetailInfo;

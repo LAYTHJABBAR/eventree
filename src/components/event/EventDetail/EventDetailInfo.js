@@ -3,7 +3,7 @@ import { Segment, Grid, Icon, Button } from 'semantic-ui-react';
 import EventDetailedMap from '../EventDetail/EventDetailMap';
 import { format } from 'date-fns';
 
-const EventDetailedInfo = ({ event }) => {
+const EventDetailInfo = ({ event }) => {
   const [isMapOpen, showMapToggle] = useState(false);
   return (
     <Segment.Group>
@@ -59,4 +59,4 @@ const EventDetailedInfo = ({ event }) => {
   );
 };
 
-export default EventDetailedInfo;
+export default EventDetailInfo;

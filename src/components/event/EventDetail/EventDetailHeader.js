@@ -1,7 +1,8 @@
 import React, {Fragment} from "react";
 import { Segment, Image, Item, Header, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import {format} from 'date-fns';
+import {format} from "date-fns";
+
 const eventImageStyle = {
   filter: "brightness(60%)"
 };
@@ -34,7 +35,9 @@ const EventDetailHeader = ({event, isHost, isGoing, goingToEvent, cancelGoingToE
                   content={event.title}
                   style={{ color: "white" }}
                 />
-                <p style={{color: 'yellow'}}>{event.date && format(event.date.toDate(), 'EEEE do LLLL')}</p>
+                <p style={{color: 'yellow'}}>{event.date && format(event.date.toDate(), "EEEE do LLLL")}
+
+</p>
                 <p>
                   Hosted by <strong>
                     <Link to={`/profile/${event.hostUid}`} style={{color: 'red'}}>{event.hostedBy}</Link></strong>

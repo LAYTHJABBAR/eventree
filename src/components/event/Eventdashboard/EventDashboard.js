@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import EventList from "../EventList/EventList";
 
@@ -17,12 +17,33 @@ const actions = {
 };
 
 class EventDashboard extends Component {
-
-  componentDidMount() {
-    this.props.getEventsForDashboard();
+  state = {
+    moreEvents: false
   }
 
-  
+  async componentDidMount() {
+    let next = await this.props.getEventsForDashboard();
+    console.log(next)
+
+    if (next && next.docs && next.docs.length > 4) {
+      this.setState({
+        moreEvents: true
+      })
+    }
+  }
+
+  getNextEvents = async () => {
+    const {events} = this.props;
+    let lastEvent = events && events[events.length - 1];
+    console.log(lastEvent);
+    let next = await this.props.getEventsForDashboard(lastEvent);
+    console.log(next);
+    if (next && next.docs && next.docs.length <= 4) {
+      this.setState({
+        moreEvents: false
+      })
+    }
+  }
 
   render() {
     const { events, loading } = this.props;
@@ -30,7 +51,8 @@ class EventDashboard extends Component {
     return (
       <Grid>
         <Grid.Column width={10}>
-          <EventList events={events}  />
+          <EventList events={events} />
+          <Button onClick={this.getNextEvents} disabled={!this.state.moreEvents} content='More Events' color='purple' flaoted='right' />
         </Grid.Column>
         <Grid.Column width={6}>
           <h2>Activity Feed</h2>

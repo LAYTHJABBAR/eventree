@@ -71,25 +71,37 @@ export const loadEvents = () => {
   };
 };
 
-export const getEventsForDashboard = () =>
+export const getEventsForDashboard = (lastEvent) =>
 async (dispatch, getState) => {
   let today = new Date()
   const firestore = firebase.firestore();
-  const eventsQuery = firestore.collection('events').where('date', '>=', today);
+  const eventsRef = firestore.collection('events')
 
   try {
-    dispatch(asyncActionStart())
-    let querySnap = await eventsQuery.get()
-    let events = [];
-    let i = 0;
+  dispatch(asyncActionStart())
+  let startAfter = lastEvent && await firestore.collection('events').doc(lastEvent.id).get()
+  let query;
 
-    for (i = 0; i < querySnap.docs.length; i++) {
-      let evt = {...querySnap.docs[i].data(), id: querySnap.docs[i].id};
-      events.push(evt);
+  lastEvent ? query = eventsRef.where('date', '>=', today).orderBy('date').startAfter(startAfter).limit(5) :
+  query = eventsRef.where('date', '>=', today).orderBy('date').limit(5)
 
-    }
-    dispatch({type: FETCH_EVENTS, payload: {events}})
-    dispatch(asyncActionFinish())
+ let querySnap = await query.get();
+ if (querySnap.docs.length === 0) {
+   dispatch(asyncActionFinish())
+   return querySnap;
+ }
+
+  let events = [];
+  let i = 0;
+
+  for (i = 0; i < querySnap.docs.length; i++) {
+    let evt = {...querySnap.docs[i].data(), id: querySnap.docs[i].id};
+    events.push(evt);
+
+  }
+  dispatch({type: FETCH_EVENTS, payload: {events}})
+  dispatch(asyncActionFinish())
+  return querySnap;
   } catch (error) {
     console.log(error)
   dispatch(asyncActionError())

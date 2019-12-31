@@ -7,6 +7,7 @@ import {
   asyncActionError
 } from "../async/asyncActions";
 import { createNewEvent } from "../../app/common/util/helpers";
+import firebase from '../../app/config/firebase';
 
 export const createEvent = event => {
   return async (dispatch, getState, { getFirestore, getFirebase }) => {
@@ -69,3 +70,29 @@ export const loadEvents = () => {
     }
   };
 };
+
+export const getEventsForDashboard = () =>
+async (dispatch, getState) => {
+  let today = new Date()
+  const firestore = firebase.firestore();
+  const eventsQuery = firestore.collection('events').where('date', '>=', today);
+
+  try {
+    dispatch(asyncActionStart())
+    let querySnap = await eventsQuery.get()
+    let events = [];
+    let i = 0;
+
+    for (i = 0; i < querySnap.docs.length; i++) {
+      let evt = {...querySnap.docs[i].data(), id: querySnap.docs[i].id};
+      events.push(evt);
+
+    }
+    dispatch({type: FETCH_EVENTS, payload: {events}})
+    dispatch(asyncActionFinish())
+  } catch (error) {
+    console.log(error)
+  dispatch(asyncActionError())
+  } 
+
+}

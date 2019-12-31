@@ -10,7 +10,7 @@ const EventDetailInfo = ({ event }) => {
       <Segment attached='top'>
         <Grid>
           <Grid.Column width={1}>
-            <Icon size='large' color='teal' name='info' />
+            <Icon size='large' color='black' name='info' />
           </Grid.Column>
           <Grid.Column width={15}>
             <p>{event.description}</p>
@@ -20,7 +20,7 @@ const EventDetailInfo = ({ event }) => {
       <Segment attached>
         <Grid verticalAlign='middle'>
           <Grid.Column width={1}>
-            <Icon name='calendar' size='large' color='teal' />
+            <Icon name='calendar' size='large' color='black' />
           </Grid.Column>
           <Grid.Column width={15}>
             {event.date &&
@@ -34,7 +34,7 @@ const EventDetailInfo = ({ event }) => {
       <Segment attached>
         <Grid verticalAlign='middle'>
           <Grid.Column width={1}>
-            <Icon name='marker' size='large' color='teal' />
+            <Icon name='marker' size='large' color='black' />
           </Grid.Column>
           <Grid.Column width={11}>
             <span>{event.venue}</span>
@@ -42,7 +42,7 @@ const EventDetailInfo = ({ event }) => {
           <Grid.Column width={4}>
             <Button
               onClick={() => showMapToggle(!isMapOpen)}
-              color='teal'
+              color='purple'
               size='tiny'
               content={isMapOpen ? 'Hide map' : 'Show map'}
             />

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import EventDashboard from "../../components/event/Eventdashboard/EventDashboard";
+import EventDashboard from '../../components/event/Eventdashboard/EventDashboard'
 import NavBar from "../../components/nav/NavBar/NavBar";
 import { Container } from "semantic-ui-react";
 import { Route, Switch, withRouter } from "react-router-dom";

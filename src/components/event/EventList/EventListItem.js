@@ -50,7 +50,7 @@ export default class EventListItem extends Component {
              
                  as={Link} 
                  to= {`/events/${event.id}`}
-                 color="teal"
+                 color="purple"
                   floated="right" 
                   content="View" />
               </Segment>

@@ -7,11 +7,11 @@ const EventDetailedSidebar = ({ attendees }) => {
     <Fragment>
       <Segment
         textAlign='center'
-        style={{ border: 'none' }}
+        style={{ border: 'sold' }}
         attached='top'
         secondary
         inverted
-        color='teal'
+        color='purple'
       >
         {attendees && attendees.length} {attendees && attendees.length === 1 ? 'Person' : 'People'} Going
       </Segment>
@@ -22,9 +22,9 @@ const EventDetailedSidebar = ({ attendees }) => {
               <Item key={attendee.id} style={{ position: 'relative' }}>
                 {isHost && (
                   <Label
-                    style={{ position: 'absolute' }}
+                    style={{ position: 'absolute', top:'-20px' }}
                     color='orange'
-                    ribbon='right'
+                    tag='right'
                   >
                     Host
                   </Label>

@@ -15,7 +15,7 @@ export const updateProfile = user => async (
   const { isLoaded, isEmpty, ...updatedUser } = user;
   try {
     await firebase.updateProfile(updatedUser);
-    toastr.success("Success", "Your profile has been updated");
+    toastr.success("done", "Your profile has been updated");
   } catch (error) {
     console.log(error);
   }
@@ -127,14 +127,30 @@ export const goingToEvent = (event) =>
                 eventDate: event.date,
                 host: false
             })
-            toastr.success('Success', 'You have signed up to the event')
+            toastr.success('done', 'You have signed up to the event')
         } catch (error) {
             console.log(error)
             toastr.error('Oops', 'Problem signing up to the event')
         }
     }
+    export const canelGoingToEvent = (event) => 
+    async (dispatch, getState, {getFirestore, getFirebase}) => {
+      const firestore = getFirestore();
+      const firebase = getFirebase();
+      const user = firebase.auth().currentUser;
+      try {
+        await firestore.update(`events/${event.id}`, {
+          [`attendees.${user.uid}`]: firestore.FieldValue.delete()
+        })
+        await firestore.delete(`event_attendee/${event.id}_${user.id}`)
+        toastr.success("done", 'you removed from the event going list')
+      } catch (error) {
+        console.log(error)
+        toastr.error('fail', 'cancelling faild')
+      }
+    }
 
-export const cancelGoingToEvent = (event) => 
+    export const cancelGoingToEvent = (event) => 
     async (dispatch, getState, {getFirestore, getFirebase}) => {
         const firestore = getFirestore();
         const firebase = getFirebase();
@@ -144,9 +160,9 @@ export const cancelGoingToEvent = (event) =>
                 [`attendees.${user.uid}`]: firestore.FieldValue.delete()
             })
             await firestore.delete(`event_attendee/${event.id}_${user.uid}`);
-            toastr.success('Success', 'You have removed yourself from the event');
+            toastr.success('done', 'You removed from the event');
         } catch (error) {
             console.log(error);
-            toastr.error('Oops', 'Something went wrong')
+            toastr.error('fail', 'your are not removed from the attending list')
         }
-    } 
+    }

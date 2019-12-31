@@ -62,7 +62,7 @@ const PhotosPage = ({
     try {
       await uploadProfileImage(image, files[0].name);
       handleCancelCrop();
-      toastr.success("Success", "Photo uploaded");
+      toastr.success("done", "Photo uploaded");
     } catch (error) {
       toastr.error("Fail", "Something went wrong");
     }

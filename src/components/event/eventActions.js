@@ -23,7 +23,7 @@ export const createEvent = event => {
         eventDate: event.date,
         host: true
       });
-      toastr.success("Success!", "Event has been created");
+      toastr.success("done", "Event has been created");
       return createdEvent;
     } catch (error) {
       console.log(error);

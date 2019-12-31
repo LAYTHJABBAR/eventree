@@ -54,7 +54,7 @@ export const registerUser = user => async (
       try {
         await user.updatePassword(creds.newPassword1);
         await dispatch(reset('account'));
-        toastr.success('Success', 'Your password has been updated')
+        toastr.success('done', 'Your password has been updated')
       } catch (error) {
         throw new SubmissionError({
           _error: error.message

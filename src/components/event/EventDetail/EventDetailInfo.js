@@ -9,20 +9,20 @@ const EventDetailInfo = ({ event }) => {
     <Segment.Group>
       <Segment attached='top'>
         <Grid>
-          <Grid.Column width={1}>
+          <Grid.Column width={3}>
             <Icon size='large' color='black' name='info' />
           </Grid.Column>
-          <Grid.Column width={15}>
+          <Grid.Column width={16}>
             <p>{event.description}</p>
           </Grid.Column>
         </Grid>
       </Segment>
       <Segment attached>
         <Grid verticalAlign='middle'>
-          <Grid.Column width={1}>
+          <Grid.Column width={3}>
             <Icon name='calendar' size='large' color='black' />
           </Grid.Column>
-          <Grid.Column width={15}>
+          <Grid.Column width={16}>
             {event.date &&
             <span>
               {format(event.date.toDate(), 'EEEE do LLL')} at{' '}
@@ -33,10 +33,10 @@ const EventDetailInfo = ({ event }) => {
       </Segment>
       <Segment attached>
         <Grid verticalAlign='middle'>
-          <Grid.Column width={1}>
+          <Grid.Column width={3}>
             <Icon name='marker' size='large' color='black' />
           </Grid.Column>
-          <Grid.Column width={11}>
+          <Grid.Column width={15}>
             <span>{event.venue}</span>
           </Grid.Column>
           <Grid.Column width={4}>

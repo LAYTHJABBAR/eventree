@@ -82,8 +82,8 @@ async (dispatch, getState) => {
   let startAfter = lastEvent && await firestore.collection('events').doc(lastEvent.id).get()
   let query;
 
-  lastEvent ? query = eventsRef.where('date', '>=', today).orderBy('date').startAfter(startAfter).limit(5) :
-  query = eventsRef.where('date', '>=', today).orderBy('date').limit(5)
+  lastEvent ? query = eventsRef.where('date', '<=', today).orderBy('date').startAfter(startAfter).limit(5) :
+  query = eventsRef.where('date', '<=', today).orderBy('date').limit(5)
 
  let querySnap = await query.get();
  if (querySnap.docs.length === 0) {

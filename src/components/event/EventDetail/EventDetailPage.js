@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Grid } from "semantic-ui-react";
 import EventDetailHeader from "./EventDetailHeader";
 import EventDetailInfo from "./EventDetailInfo";
-import EventDetailChat from "./EventDetailChat";
+
 import EventDetailSideBar from "./EventDetailSideBar";
 import { withFirestore } from "react-redux-firebase";
 import { objectToArray } from "../../../app/common/util/helpers";
@@ -51,7 +51,7 @@ class EventDetailPage extends Component {
         <Grid.Column width={10}>
           <EventDetailHeader event={event} isGoing= {isGoing} isHost={isHost} goingToEvent={goingToEvent} cancelGoingToEvent={cancelGoingToEvent}/>
           <EventDetailInfo event={event} />
-          <EventDetailChat />
+         
         </Grid.Column>
         <Grid.Column width={6}>
           <EventDetailSideBar attendees={attendees} />

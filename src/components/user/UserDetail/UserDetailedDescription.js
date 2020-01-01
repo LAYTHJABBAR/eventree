@@ -1,6 +1,14 @@
-import React from 'react';
-import { Segment, Grid, Header, List, Item, Icon } from 'semantic-ui-react';
-import { format } from 'date-fns';
+import React from "react";
+import {
+  Segment,
+  Grid,
+  Header,
+  List,
+  Item,
+  Icon,
+  Label
+} from "semantic-ui-react";
+import { format } from "date-fns";
 
 const UserDetailedDescription = ({ profile }) => {
   return (
@@ -8,28 +16,40 @@ const UserDetailedDescription = ({ profile }) => {
       <Segment>
         <Grid columns={2}>
           <Grid.Column width={10}>
-            <Header icon='smile' content='About Display Name' />
+            <Label
+              icon="book"
+              content={profile.displayName}
+              textColor="red"
+            ></Label>
             <p>
-              I am a: <strong>{profile.occupation || 'tbn'}</strong>
+              I am a: <strong>{profile.occupation || "tbn"}</strong>
             </p>
             <p>
-              Originally from <strong>{profile.origin || 'tbn'}</strong>
+              Originally from: <strong>{profile.origin || "tbn"}</strong>
             </p>
             <p>
-              Member Since:{' '}
+              Member Since:{" "}
               <strong>
-                {profile.createdAt && format(profile.createdAt.toDate(), 'dd LLL yyyy')}
+                {profile.createdAt &&
+                  format(profile.createdAt.toDate(), "dd LLL yyyy")}
               </strong>
             </p>
-            <p>{profile.description}</p>
+            <p textAlign="center">
+              {" "}
+              About me: <strong>{profile.about}</strong>
+            </p>
           </Grid.Column>
-          <Grid.Column width={6}>
-            <Header icon='heart outline' content='Interests' />
+          <Grid.Column width={2}>
+            <Header as="h3" icon textAlign="center">
+              <Icon name="heart ouline" circular color="red" />
+              <Header.Content>Interests</Header.Content>
+            </Header>
+
             <List>
               {profile.interests ? (
                 profile.interests.map((interest, index) => (
                   <Item key={index}>
-                    <Icon name='heart' />
+                    <Icon name="heart" color="red" />
                     <Item.Content>{interest}</Item.Content>
                   </Item>
                 ))

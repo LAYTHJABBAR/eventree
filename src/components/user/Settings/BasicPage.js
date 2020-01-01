@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Segment, Form, Header, Divider, Button} from 'semantic-ui-react';
+import {Segment, Form, Header, Divider, Button, Icon} from 'semantic-ui-react';
 import {Field, reduxForm} from 'redux-form';
 import moment from 'moment';
 import DateInput from "../../../app/common/form/DateInput";
@@ -29,14 +29,21 @@ class BasicPage extends Component {
                         name='gender'
                         type='radio'
                         value='male'
-                        label='Male'
+                        label={<Icon name='mars'/>}
                         component={RadioInput}
                       />
                       <Field 
                         name='gender'
                         type='radio'
                         value='female'
-                        label='Female'
+                        label={<Icon name='venus'/>}
+                        component={RadioInput}
+                      />
+                        <Field 
+                        name='gender'
+                        type='radio'
+                        value='Other'
+                        label={<Icon name='transgender alternate'/>}
                         component={RadioInput}
                       />
                     </Form.Group>

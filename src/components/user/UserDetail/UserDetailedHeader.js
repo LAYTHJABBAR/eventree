@@ -13,7 +13,7 @@ const UserDetailedHeader = ({ profile }) => {
         <Item.Group>
           <Item>
             <Fragment
-              height={150}
+            
               placeholder={<Item.Image avatar size='small' src='/assets/user.png' />}
             >
               <Item.Image

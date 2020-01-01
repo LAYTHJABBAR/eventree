@@ -5,7 +5,7 @@ import { Container } from "semantic-ui-react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { HomePage } from "../../components/home/HomePage";
 import EventDetailPage  from "../../components/event/EventDetail/EventDetailPage";
-import  {PeopleDashboard}  from "../../components/user/PeopleDashboard/PeopleDashboard";
+
 import UserDetailedPage from "../../components/user/UserDetail/UserDetailedPage"
 import SettingsDashboard from "../../components/user/Settings/SettingsDashboard";
 import EventForm from "../../components/event/EventForm/EventForm";
@@ -24,7 +24,7 @@ class App extends Component {
               <Switch key = {this.props.location.key}>
                 <Route exact path='/events' component={EventDashboard}/>
                 <Route path='/events/:id' component={EventDetailPage}/>
-                <Route path='/people' component={PeopleDashboard}/>
+                
                 <Route path='/profile/:id' component={UserDetailedPage}/>
                 <Route path='/settings' component={SettingsDashboard}/>
                 <Route path={['/createEvent', '/manage/:id']} component={EventForm}/>         

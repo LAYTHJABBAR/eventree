@@ -30,10 +30,9 @@ const UserDetailedEvents = ({ events, eventsLoading, changeTab }) => {
         <br />
 
         <Card.Group itemsPerRow={5}>
-          {events &&
-            events.map(event => (
+          {events && events.map(event => (
               <Card as={Link} to={`/events/${event.id}`} key={event.id}>
-                <Image src={`/assets/categoryImages/${event.category}.jpg`} />
+                <Image src={`/assets/${event.category}.jpg`} />
                 <Card.Content>
                   <Card.Header textAlign='center'>{event.title}</Card.Header>
                   <Card.Meta textAlign='center'>

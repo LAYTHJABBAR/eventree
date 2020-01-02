@@ -135,3 +135,8 @@ body {
   animation-iteration-count: infinite;
   cursor: pointer;
 }
+
+p:last-child {
+  margin-bottom: 0;
+  text-align: justify;
+}

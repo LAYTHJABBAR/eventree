@@ -3,7 +3,6 @@ import { Grid } from 'semantic-ui-react';
 import { firestoreConnect, isEmpty } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import UserDetailedHeader from './UserDetailedHeader';
-import UserDetailedSidebar from './UserDetailedSidebar';
 import UserDetailedPhotos from './UserDetailedPhotos';
 import UserDetailedEvents from './UserDetailedEvents';
 import UserDetailedDescription from './UserDetailedDescription';
@@ -58,9 +57,8 @@ class UserDetailedPage extends Component {
     if (loading) return <LoadingComponent />
     return (
       <Grid>
-        <UserDetailedHeader profile={profile} />
+        <UserDetailedHeader profile={profile} isCurrentUser={isCurrentUser} />
         <UserDetailedDescription profile={profile} />
-        <UserDetailedSidebar isCurrentUser={isCurrentUser} />
         {photos && <UserDetailedPhotos photos={photos} />}
         <UserDetailedEvents events={events} eventsLoading={eventsLoading} changeTab={this.changeTab} />
       </Grid>

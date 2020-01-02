@@ -19,7 +19,7 @@ const panes = [
 
 const UserDetailedEvents = ({ events, eventsLoading, changeTab }) => {
   return (
-    <Grid.Column width={12}>
+    <Grid.Column width={16}>
       <Segment attached loading={eventsLoading}>
         <Header icon='calendar' content='Events' />
         <Tab

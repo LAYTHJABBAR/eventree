@@ -93,19 +93,50 @@ export const deletePhoto = photo => async (
   }
 };
 
-export const setMainPhoto = photo => async (
-  dispatch,
-  getState,
-  { getFirebase }
-) => {
-  const firebase = getFirebase();
+export const setMainPhoto = photo => async (dispatch, getState) => {
+  const firestore = firebase.firestore();
+  const user = firebase.auth().currentUser;
+  const today = new Date();
+  let userDocRef = firestore.collection('users').doc(user.uid);
+  let eventAttendeeRef = firestore.collection('event_attendee');
   try {
-    return await firebase.updateProfile({
+    dispatch(asyncActionStart());
+    let batch = firestore.batch();
+
+    batch.update(userDocRef, {
       photoURL: photo.url
     });
+
+    let eventQuery = await eventAttendeeRef
+      .where('userUid', '==', user.uid)
+      .where('eventDate', '>=', today);
+      
+
+    let eventQuerySnap = await eventQuery.get();
+
+    for (let i = 0; i < eventQuerySnap.docs.length; i++) {
+      let eventDocRef = await firestore
+        .collection('events')
+        .doc(eventQuerySnap.docs[i].data().eventId);
+      let event = await eventDocRef.get();
+      if (event.data().hostUid === user.uid) {
+        batch.update(eventDocRef, {
+          hostPhotoURL: photo.url,
+          [`attendees.${user.uid}.photoURL`]: photo.url
+        });
+      } else {
+        batch.update(eventDocRef, {
+          [`attendees.${user.uid}.photoURL`]: photo.url
+        });
+      }
+    }
+    console.log(batch);
+    await batch.commit();
+    dispatch(asyncActionFinish());
   } catch (error) {
     console.log(error);
-    throw new Error("Problem setting main photo");
+    dispatch(asyncActionError());
+    throw new Error('Problem setting main photo');
   }
 };
 
@@ -188,52 +219,51 @@ export const getUserEvents = (userUid, activeTab) => async (
   dispatch(asyncActionStart());
   const firestore = firebase.firestore();
   const today = new Date();
-  let eventsRef = firestore.collection('event_attendee');
+  let eventsRef = firestore.collection("event_attendee");
   let query;
   switch (activeTab) {
     case 1: // past events
       query = eventsRef
-        .where('userUid', '==', userUid)
-        .where('eventDate', '<=', today)
-        .orderBy('eventDate', 'desc');
+        .where("userUid", "==", userUid)
+        .where("eventDate", "<=", today)
+        .orderBy("eventDate", "desc");
       break;
     case 2: // future events
       query = eventsRef
-        .where('userUid', '==', userUid)
-        .where('eventDate', '>=', today)
-        .orderBy('eventDate');
+        .where("userUid", "==", userUid)
+        .where("eventDate", ">=", today)
+        .orderBy("eventDate");
       break;
     case 3: // hosted events
       query = eventsRef
-        .where('userUid', '==', userUid)
-        .where('host', '==', true)
-        .orderBy('eventDate', 'desc');
+        .where("userUid", "==", userUid)
+        .where("host", "==", true)
+        .orderBy("eventDate", "desc");
       break;
     default:
       query = eventsRef
-        .where('userUid', '==', userUid)
-        .orderBy('eventDate', 'desc');
+        .where("userUid", "==", userUid)
+        .orderBy("eventDate", "desc");
       break;
   }
   try {
     let querySnap = await query.get();
-    let events =[];
-    let i =0;
+    let events = [];
+    let i = 0;
 
-  for (i = 0; i < querySnap.docs.length; i++) {
-    let evt = await firestore.collection('events').doc(querySnap.docs[i].data().eventId).get()
-    events.push({...evt.data(), id: evt.id})
-}
+    for (i = 0; i < querySnap.docs.length; i++) {
+      let evt = await firestore
+        .collection("events")
+        .doc(querySnap.docs[i].data().eventId)
+        .get();
+      events.push({ ...evt.data(), id: evt.id });
+    }
 
-dispatch({type: FETCH_EVENTS, payload: {events}}) 
+    dispatch({ type: FETCH_EVENTS, payload: { events } });
 
-
-
-  
-    dispatch(asyncActionFinish())
-
+    dispatch(asyncActionFinish());
   } catch (error) {
-      console.log(error)
-      dispatch(asyncActionError())
+    console.log(error);
+    dispatch(asyncActionError());
   }
 };

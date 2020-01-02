@@ -30,6 +30,8 @@ export default class EventListItem extends Component {
                     {event.hostedBy}
                   </Link>
                 </Item.Description>
+                <Item.Description>Category: {" "}<Link style={{color: 'blue'}}>{event.category}</Link>
+                </Item.Description>
                 {event.cancelled && (
                   <Label
                     style={{ top: "8px", right: "0px" }}

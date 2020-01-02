@@ -8,12 +8,19 @@ import PlaceInput from '../../../app/common/form/PlaceInput';
 import SelectInput from '../../../app/common/form/SelectInput';
 
 const interests = [
-  { key: 'drinks', text: 'Drinks', value: 'drinks' },
-  { key: 'culture', text: 'Culture', value: 'culture' },
-  { key: 'film', text: 'Film', value: 'film' },
-  { key: 'food', text: 'Food', value: 'food' },
-  { key: 'music', text: 'Music', value: 'music' },
-  { key: 'travel', text: 'Travel', value: 'travel' }
+  { key: 'Drinks', text: 'Drinks', value: 'Drinks' },
+  { key: 'Culture', text: 'Culture', value: 'Culture' },
+  { key: 'Film', text: 'Film', value: 'Film' },
+  { key: 'Food', text: 'Food', value: 'Food' },
+  { key: 'Music', text: 'Music', value: 'Music' },
+  { key: 'Travel', text: 'Travel', value: 'Travel' },
+  {key: 'Sport', text: 'Sport', value: 'Sport'},
+  {key: 'Conference', text: 'Conference', value: 'Conference'},
+  {key: 'Family', text: 'Family', value: 'Family'},
+  {key: 'Reading', text: 'Reading', value: 'Reading'},
+  {key: 'LifeStyle', text: 'LifeStyle', value: 'LifeStyle'},
+  {key: 'Dancing', text: 'Dancing', value: 'Dancing'},
+  {key: 'Fashion', text: 'Fashion', value: 'Fashion'}
 ];
 
 const AboutPage = ({ pristine, submitting, handleSubmit, updateProfile }) => {

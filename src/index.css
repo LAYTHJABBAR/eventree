@@ -129,3 +129,9 @@ body {
 .drop-position {
   margin-right: 0px;
 }
+/* homepage */
+.Change:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}

@@ -45,7 +45,6 @@ class NavBar extends Component {
             <Button
               as={Link}
               to='/createEvent'
-              floated='center'
               color='yellow'
                > Create Event  <Icon name='pencil alternate' inverted position='right' ></Icon>
 

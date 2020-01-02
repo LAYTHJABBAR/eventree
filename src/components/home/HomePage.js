@@ -1,22 +1,39 @@
 import React from 'react';
-import { Segment, Container, Header, Image, Button, Icon } from 'semantic-ui-react';
+import { Segment, Container, Image } from 'semantic-ui-react';
 
 export const HomePage = ({history}) => {
   return (
         <Segment  textAlign='center'  vertical className='masthead' inverted>
         <Container text>
-          <Header as='h1' inverted>
+      
+        <div id="leaves">
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i> 
+</div>
             <Image
+            className='Change'
+            onClick={() => history.push('/events')} size='meduim' 
+            position='center'
+            inverted
               src='/assets/eventree.png'
               alt='logo'
               style={{ marginBottom: 30 }}
+              
             />
-            
-          </Header>
-          <Button onClick={() => history.push('/events')} size='meduim' inverted>
-            Get started
-            <Icon name='right arrow' inverted />
-          </Button>
+
         </Container>
       </Segment>
   )

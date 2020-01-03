@@ -8,6 +8,7 @@ import EventDetailSideBar from "./EventDetailSideBar";
 import { withFirestore } from "react-redux-firebase";
 import { objectToArray } from "../../../app/common/util/helpers";
 import {goingToEvent, cancelGoingToEvent} from '../../user/UserActions'
+import NotFound from "../../../app/layout/NotFound";
 
 const mapState = (state, ownProps) => {
   const eventId = ownProps.match.params.id;
@@ -44,8 +45,11 @@ class EventDetailPage extends Component {
     const { event, auth, goingToEvent, cancelGoingToEvent} = this.props;
     const attendees =
       event && event.attendees && objectToArray(event.attendees);
-      const isHost = event.hostUid === auth.uid;
-      const isGoing = attendees && attendees.some(a => a.id === auth.uid)
+    const isHost = event.hostUid === auth.uid;
+    const isGoing = attendees && attendees.some(a => a.id === auth.uid)
+
+    if (Object.keys(event).length === 0) return <NotFound />
+
     return (
       <Grid>
         <Grid.Column width={10}>

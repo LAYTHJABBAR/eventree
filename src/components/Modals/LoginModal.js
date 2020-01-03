@@ -1,31 +1,25 @@
-import React, {Component} from 'react';
-import {Modal} from 'semantic-ui-react';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import { Modal } from "semantic-ui-react";
+import { connect } from "react-redux";
 
-import LoginForm from '../authantication/Login/LoginForm';
-import {closeModal} from "../Modals/modalActions";
+import LoginForm from "../authantication/Login/LoginForm";
+import { closeModal } from "../Modals/modalActions";
 
-const actions = {closeModal};
+const actions = { closeModal };
 
 class LoginModal extends Component {
-    render() {
-        return (
-            <Modal
-                size='mini'
-                open={true}
-                onClose={this.props.closeModal}
-            >
-                <Modal.Header>
-                    Login to Eventree
-                </Modal.Header>
-                <Modal.Content>
-                    <Modal.Description>
-                        <LoginForm />
-                    </Modal.Description>
-                </Modal.Content>
-            </Modal>
-        );
-    }
+  render() {
+    return (
+      <Modal size="mini" open={true} onClose={this.props.closeModal}>
+        <Modal.Header>Login to Eventree</Modal.Header>
+        <Modal.Content>
+          <Modal.Description>
+            <LoginForm />
+          </Modal.Description>
+        </Modal.Content>
+      </Modal>
+    );
+  }
 }
 
 export default connect(null, actions)(LoginModal);

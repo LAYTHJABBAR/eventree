@@ -9,7 +9,7 @@ const actions = {
   login
 }
 
-const LoginForm = ({login, handleSubmit, error}) => {
+const LoginForm = ({login, handleSubmit, error, submitting}) => {
   return (
     <Form  size="large" onSubmit={handleSubmit(login)} autoComplete='off'>
       <Segment>
@@ -22,7 +22,7 @@ const LoginForm = ({login, handleSubmit, error}) => {
         <Field
           name="password"
           component={TextInput}
-          type="password"
+          type="password" 
           placeholder="password"
         />
         {error === `The email address is badly formatted.` && <Label basic color='red'>No User Under this Email</Label>}
@@ -31,7 +31,7 @@ const LoginForm = ({login, handleSubmit, error}) => {
         {error === `signInWithEmailAndPassword failed: First argument "email" must be a valid string.` && <Label basic color='red'>Please enter a valid Email</Label>}
 
         
-        <Button fluid size="large" color="purple">
+        <Button loading={submitting} fluid size="large" color="purple">
           Login
         </Button>
       </Segment>

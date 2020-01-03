@@ -1,7 +1,8 @@
 import React, {Fragment} from "react";
-import { Segment, Image, Item, Header, Button } from "semantic-ui-react";
+import { Segment, Image, Item, Header, Button, Label } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import {format} from "date-fns";
+import { version } from "moment";
 
 const eventImageStyle = {
   filter: "brightness(60%)"
@@ -49,12 +50,12 @@ const EventDetailHeader = ({event, isHost, isGoing, goingToEvent, cancelGoingToE
       </Segment>
 
       <Segment attached="bottom" clearing>
-       {!isHost &&
+       {!isHost && event.cancelled &&
         <Fragment>
           {isGoing ? (<Button onClick={() => cancelGoingToEvent(event)}>Canel my Place</Button>) : (<Button onClick={() => goingToEvent(event)} color="purple">JOIN THIS EVENT</Button>)}
         </Fragment>}
 
-{isHost && 
+      {isHost && 
         <Button as={Link} to={`/manage/${event.id}`} color="orange" floated="right">
           Manage Event
         </Button>}

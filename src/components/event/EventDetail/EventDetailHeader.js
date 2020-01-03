@@ -22,7 +22,9 @@ const EventDetailHeader = ({
   isHost,
   isGoing,
   goingToEvent,
-  cancelGoingToEvent
+  cancelGoingToEvent,
+  openModal,
+  authenticated
 }) => {
   return (
     <Segment.Group>

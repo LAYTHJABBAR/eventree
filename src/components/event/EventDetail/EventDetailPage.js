@@ -18,9 +18,9 @@ const mapState = (state, ownProps) => {
     state.firestore.ordered.events &&
     state.firestore.ordered.events.length > 0
   ) {
-    event = state.firestore.ordered.events.filter(
-      event => event.id === eventId
-    )[0] || {}
+    event =
+      state.firestore.ordered.events.filter(event => event.id === eventId)[0] ||
+      {};
   }
   return {
     event,
@@ -30,19 +30,25 @@ const mapState = (state, ownProps) => {
 const actions = {
   goingToEvent,
   cancelGoingToEvent
-}
+};
 class EventDetailPage extends Component {
   async componentDidMount() {
-    const { firestore, match} = this.props;
-   await firestore.setListener(`events/${match.params.id}`);
+    const { firestore, match } = this.props;
+    await firestore.setListener(`events/${match.params.id}`);
   }
   async componentWillUnmount() {
-    const { firestore, match} = this.props;
-   await firestore.unsetListener(`events/${match.params.id}`);
+    const { firestore, match } = this.props;
+    await firestore.unsetListener(`events/${match.params.id}`);
   }
 
   render() {
-    const { event, auth, goingToEvent, cancelGoingToEvent} = this.props;
+    const {
+      event,
+      auth,
+      goingToEvent,
+      cancelGoingToEvent,
+      openModal
+    } = this.props;
     const attendees =
       event && event.attendees && objectToArray(event.attendees);
     const isHost = event.hostUid === auth.uid;
@@ -53,9 +59,16 @@ class EventDetailPage extends Component {
     return (
       <Grid>
         <Grid.Column width={10}>
-          <EventDetailHeader event={event} isGoing= {isGoing} isHost={isHost} goingToEvent={goingToEvent} cancelGoingToEvent={cancelGoingToEvent}/>
+          <EventDetailHeader
+            event={event}
+            isGoing={isGoing}
+            isHost={isHost}
+            goingToEvent={goingToEvent}
+            cancelGoingToEvent={cancelGoingToEvent}
+            // aunthenticated={aunthenticated}
+            openModal={openModal}
+          />
           <EventDetailInfo event={event} />
-         
         </Grid.Column>
         <Grid.Column width={6}>
           <EventDetailSideBar attendees={attendees} />

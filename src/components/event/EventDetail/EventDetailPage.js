@@ -47,10 +47,13 @@ class EventDetailPage extends Component {
       auth,
       goingToEvent,
       cancelGoingToEvent,
-      openModal
+      openModal,
+      aunthenticated
     } = this.props;
     const attendees =
-      event && event.attendees && objectToArray(event.attendees);
+      event && event.attendees && objectToArray(event.attendees).sort((a, b) => {
+        return a.joinDate - b.joinDate;
+      });
     const isHost = event.hostUid === auth.uid;
     const isGoing = attendees && attendees.some(a => a.id === auth.uid)
 
@@ -65,7 +68,7 @@ class EventDetailPage extends Component {
             isHost={isHost}
             goingToEvent={goingToEvent}
             cancelGoingToEvent={cancelGoingToEvent}
-            // aunthenticated={aunthenticated}
+            aunthenticated={aunthenticated}
             openModal={openModal}
           />
           <EventDetailInfo event={event} />

@@ -72,13 +72,15 @@ const EventDetailHeader = ({
                 Canel my Place
               </Button>
             ) : (
-              <Button onClick={() => goingToEvent(event)} color="purple">
+              
+              <Button disabled={event.cancelled} onClick={() => goingToEvent(event)} color="purple">
                 JOIN THIS EVENT
               </Button>
+              
             )}
           </Fragment>
         )}
-
+        
         {isHost && (
           <Button
             as={Link}

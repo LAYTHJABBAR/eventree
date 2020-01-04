@@ -5,29 +5,11 @@ export const HomePage = ({history}) => {
   return (
         <Segment  textAlign='center'  vertical className='masthead' inverted>
         <Container text>
-      
-        <div id="leaves">
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i>
-  <i></i> 
-</div>
             <Image
             className='Change'
-            onClick={() => history.push('/events')} size='meduim' 
+            onClick={() => history.push('/events')} size='massive' 
             position='center'
-            inverted
+            inverted='true'
               src='/assets/eventree.png'
               alt='logo'
               style={{ marginBottom: 30 }}

@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import { Segment, Image, Item, Header, Button, Label } from "semantic-ui-react";
+import { Segment, Image, Item, Header, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import { version } from "moment";
+
 
 const eventImageStyle = {
   filter: "brightness(60%)"
@@ -48,7 +48,7 @@ const EventDetailHeader = ({
                   {event.date && format(event.date.toDate(), "EEEE do LLLL")}
                 </p>
                 <p>
-                  Hosted by{" "}
+                  Hosted by:{" "}
                   <strong>
                     <Link
                       to={`/profile/${event.hostUid}`}
@@ -58,6 +58,7 @@ const EventDetailHeader = ({
                     </Link>
                   </strong>
                 </p>
+                <p style={{color: 'blue'}}>Categary: {event.category}</p>
               </Item.Content>
             </Item>
           </Item.Group>

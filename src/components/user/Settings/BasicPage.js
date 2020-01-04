@@ -66,7 +66,7 @@ class BasicPage extends Component {
                         width={8}
                     />
                     <Divider/>
-                    <Button disabled={pristine || submitting} size='large' positive content='Update Profile'/>
+                    <Button disabled={pristine || submitting} size='large' color='purple' content='Update Profile'/>
                 </Form>
             </Segment>
         );

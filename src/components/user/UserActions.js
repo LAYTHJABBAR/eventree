@@ -169,7 +169,7 @@ export const goingToEvent = event => async (
     toastr.success("done", "You have signed up to the event");
   } catch (error) {
     console.log(error);
-    toastr.error("Oops", "Please login to sinup for the event");
+    toastr.error("Fail", "Please login to sinup for the event");
   }
 };
 export const canelGoingToEvent = event => async (

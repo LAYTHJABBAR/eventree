@@ -20,7 +20,7 @@ const UserPhotos = ({ photos, profile, deletePhoto, setMainPhoto, loading }) => 
         {photos &&
           filteredPhotos.map(photo => (
             <Card key={photo.id}>
-              <Image src={photo.url} />
+              <Image  src={photo.url} />
               <div className="ui two buttons">
                 <Button loading={loading} onClick={() => setMainPhoto(photo)} basic color="green">
                   Main

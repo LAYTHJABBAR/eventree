@@ -88,7 +88,7 @@ const goingToEvent = event => async (
     toastr.success("done", "Host signed up to the event");
   } catch (error) {
     console.log(error);
-    toastr.error("Oops", "Please login to sinup for the event");
+    toastr.error("Fail", "Please login to sinup for the event");
   }
 };
 
@@ -209,7 +209,7 @@ class EventForm extends Component {
       <Grid>
         <Grid.Column width={10}>
           <Segment>
-            <Header sub color="teal" content="Event details" />
+            <Header sub color="purple" content="Event details" />
             <Form
               onSubmit={this.props.handleSubmit(this.onFormSubmit)}
               autoComplete="off"
@@ -231,7 +231,7 @@ class EventForm extends Component {
                 rows={3}
                 placeholder="Tell us about your event"
               />
-              <Header sub color="teal" content="Event location details" />
+              <Header sub color="purple" content="Event location details" />
               <Field
                 name="city"
                 component={PlaceInput}
@@ -261,7 +261,7 @@ class EventForm extends Component {
               <Button
                 disabled={invalid || submitting || pristine}
                 loading={loading}
-                positive
+                color='purple'
                 type="submit"
               >
                 Submit
@@ -285,14 +285,15 @@ class EventForm extends Component {
                 content={event.cancelled ? "Reactivate event" : "Cancel event"}
                 onClick={() => cancelToggle(!event.cancelled, event.id)}
               />}
+              {(event.id && event.cancelled) && 
               <Button
-              disabled ={!event.cancelled}
               type="button"
               color={(event.cancelled && event.attendees) ? "red" : "orange"}
               content={event.attendees  ? "cancel attendes" : "add host"}
               onClick={() => {(event.cancelled && event.attendees) ? cancelGoing(event) : goingToEvent(event)}}
               floated='right'
         />
+              }
             </Form>
           </Segment>
         </Grid.Column>

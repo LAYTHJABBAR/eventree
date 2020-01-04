@@ -46,7 +46,7 @@ const AccountPage = ({ error, invalid, submitting, handleSubmit, updatePassword 
             </Label>
           )}
           <Divider />
-          <Button disabled={invalid || submitting} size="large" positive content="Update Password" />
+          <Button disabled={invalid || submitting} size="large" color='purple' content="Update Password" />
         </Form>
       </div>
     </Segment>

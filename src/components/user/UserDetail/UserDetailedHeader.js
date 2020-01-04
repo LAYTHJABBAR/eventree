@@ -15,7 +15,6 @@ const UserDetailedHeader = ({ profile, isCurrentUser }) => {
           <Item>
             <Fragment
             
-              placeholder={<Item.Image avatar size='small' src='/assets/user.png' />}
             >
               <Item.Image
                 avatar

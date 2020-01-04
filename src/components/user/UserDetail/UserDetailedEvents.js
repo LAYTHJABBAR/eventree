@@ -35,6 +35,7 @@ const UserDetailedEvents = ({ events, eventsLoading, changeTab }) => {
                 <Image src={`/assets/${event.category}.jpg`} />
                 <Card.Content>
                   <Card.Header textAlign='center'>{event.title}</Card.Header>
+          <Card.Meta textAlign='center'>Category: {event.category}</Card.Meta>
                   <Card.Meta textAlign='center'>
                     <div>
                       {format(event.date && event.date.toDate(), 'dd LLL yyyy')}

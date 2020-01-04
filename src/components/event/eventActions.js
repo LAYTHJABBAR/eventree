@@ -65,7 +65,7 @@ export const updateEvent = event => {
       toastr.success('Success!', 'Event has been updated');
     } catch (error) {
       dispatch(asyncActionError())
-      toastr.error('Oops', 'Something went wrong');
+      toastr.error('Fail', 'Something went wrong');
     }
   };
 };
@@ -119,11 +119,11 @@ export const getEventsForDashboard = lastEvent => async (
           .where('date', '>=', today)
           .orderBy('date')
           .startAfter(startAfter)
-          .limit(2))
+          .limit(3))
       : (query = eventsRef
           .where('date', '>=', today)
           .orderBy('date')
-          .limit(2));
+          .limit(3));
 
     let querySnap = await query.get();
 

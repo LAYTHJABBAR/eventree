@@ -19,7 +19,7 @@ const UserDetailedDescription = ({ profile }) => {
             <Label
               icon="book"
               content={profile.displayName}
-              textColor="red"
+              color="red"
             ></Label>
             <p>
               <span style={{color: 'purple'}}>I am a:</span> <strong>{profile.occupation || "None"}</strong>
@@ -41,7 +41,7 @@ const UserDetailedDescription = ({ profile }) => {
           </Grid.Column>
           <Grid.Column width={4}>
             <Header as="h4" icon textAlign="center">
-              <Icon name="heart ouline" circular color="red" />
+              <Icon name="heart outline" circular color="red" />
               <Header.Content>Interests</Header.Content>
             </Header>
             <Header as="h5" icon textAlign="center">
@@ -54,7 +54,7 @@ const UserDetailedDescription = ({ profile }) => {
                   </Item>
                 ))
               ) : (
-                <h style={{color: 'red'}}>None</h>
+                <p style={{color: 'red'}}>None</p>
               )}
             </List>
             </Header>

@@ -35,8 +35,7 @@ export default class EventListItem extends Component {
                 {event.cancelled && (
                   <Label
                     style={{ top: "8px", right: "0px" }}
-                    size="meduim"
-                    tag="right"
+                    size="medium"
                     color="red"
                     content="Event Cancelled"
                   />

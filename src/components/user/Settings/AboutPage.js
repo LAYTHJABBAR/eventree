@@ -72,7 +72,7 @@ const AboutPage = ({ pristine, submitting, handleSubmit, updateProfile }) => {
           placeholder="Country of Origin"
         />
         <Divider />
-        <Button disabled={pristine || submitting} size="large" positive content="Update Profile" />
+        <Button disabled={pristine || submitting} size="large" color="purple" content="Update Profile" />
       </Form>
     </Segment>
   );

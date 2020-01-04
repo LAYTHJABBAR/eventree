@@ -26,8 +26,6 @@ const EventDetailedSidebar = ({ attendees, isHost }) => {
                   <Label
                     style={{ position: 'relative' }}
                     color='green'
-                    horizontal='right'
-                    textAlign='right'
                   >
                     Host
                   </Label>

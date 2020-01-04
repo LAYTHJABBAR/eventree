@@ -16,7 +16,7 @@ import SelectInput from "../../../app/common/form/SelectInput";
 import PlaceInput from "../../../app/common/form/PlaceInput";
 import DateInput from "../../../app/common/form/DateInput";
 import { withFirestore } from "react-redux-firebase";
-
+import {toastr} from "react-redux-toastr"
 const google = window.google;
 
 const mapState = (state, ownProps) => {
@@ -38,11 +38,66 @@ const mapState = (state, ownProps) => {
     loading: state.async.loading
   };
 };
+let cancelGoing= event => async (
+  dispatch,
+  getState,
+  { getFirestore, getFirebase }
+) => {
+  const firestore = getFirestore();
+  const firebase = getFirebase();
+  const user = firebase.auth().currentUser;
+  try {
+    await firestore.update(`events/${event.id}`, {
+
+      [`attendees`]: firestore.FieldValue.delete()
+    });
+    await firestore.delete(`event_attendee/${event.id}_${user.uid}`);
+    toastr.success("done", "Attendees Removed From the Event");
+  } catch (error) {
+    console.log(error);
+    toastr.error("fail", "your are not removed from the attending list");
+  }
+};
+
+const goingToEvent = event => async (
+  dispatch,
+  getState,
+  { getFirebase, getFirestore }
+) => {
+  const firestore = getFirestore();
+  const firebase = getFirebase();
+  const user = firebase.auth().currentUser;
+  try {
+    await firestore.update(`events/${event.id}`, {
+      [`attendees`]:[`${user.uid}`],
+      [`attendees.${user.uid}`]: {
+       displayName: event.hostedBy,
+       going: true,
+       host: true,
+       joinDate: new Date(),
+       photoURL: event.hostPhotoURL
+        
+      }
+    });
+    await firestore.set(`event_attendee/${event.id}_${user.uid}`, {
+      eventId: event.id,
+      userUid: user.uid,
+      eventDate: event.date,
+      host: true
+    });
+    toastr.success("done", "Host signed up to the event");
+  } catch (error) {
+    console.log(error);
+    toastr.error("Oops", "Please login to sinup for the event");
+  }
+};
 
 const actions = {
   createEvent,
   updateEvent,
-  cancelToggle
+  cancelToggle,
+  cancelGoing,
+  goingToEvent
 };
 
 const validate = combineValidators({
@@ -56,7 +111,7 @@ const validate = combineValidators({
   )(),
   city: isRequired("city"),
   venue: isRequired("venue"),
-  date: isRequired("date")
+  date: isRequired("date") 
 });
 
 const category = [
@@ -74,6 +129,8 @@ const category = [
   {key: 'Dancing', text: 'Dancing', value: 'Dancing'},
   {key: 'Fashion', text: 'Fashion', value: 'Fashion'}
 ];
+
+
 
 class EventForm extends Component {
   state = {
@@ -144,7 +201,9 @@ class EventForm extends Component {
       pristine,
       event,
       cancelToggle,
-      loading
+      loading,
+      cancelGoing,
+      goingToEvent
     } = this.props;
     return (
       <Grid>
@@ -226,6 +285,14 @@ class EventForm extends Component {
                 content={event.cancelled ? "Reactivate event" : "Cancel event"}
                 onClick={() => cancelToggle(!event.cancelled, event.id)}
               />}
+              <Button
+              disabled ={!event.cancelled}
+              type="button"
+              color={(event.cancelled && event.attendees) ? "red" : "orange"}
+              content={event.attendees  ? "cancel attendes" : "add host"}
+              onClick={() => {(event.cancelled && event.attendees) ? cancelGoing(event) : goingToEvent(event)}}
+              floated='right'
+        />
             </Form>
           </Segment>
         </Grid.Column>

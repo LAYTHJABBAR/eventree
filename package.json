@@ -1,5 +1,5 @@
 {
-  "name": "Eventree",
+  "name": "eventree",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -35,7 +35,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "cypress open -P ."
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -53,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^9.4.0",
     "@types/react-redux-toastr": "^7.4.1",
     "@types/react-router-dom": "^4.3.3",
     "redux-devtools-extension": "^2.13.8",

@@ -77,7 +77,7 @@ export const socialLogin = (selectedProvider) =>
       try {
         await user.updatePassword(creds.newPassword1);
         await dispatch(reset('account'));
-        toastr.success('Success', 'Your password has been updated')
+        toastr.success('Done', 'Your password has been updated')
       } catch (error) {
         throw new SubmissionError({
           _error: error.message

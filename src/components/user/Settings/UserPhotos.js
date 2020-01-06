@@ -26,6 +26,7 @@ const UserPhotos = ({ photos, profile, deletePhoto, setMainPhoto, loading }) => 
                   Main
                 </Button>
                 <Button
+                loading={loading}
                   onClick={() => deletePhoto(photo)}
                   basic
                   icon="trash"

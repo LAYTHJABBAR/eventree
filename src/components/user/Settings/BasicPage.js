@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Segment, Form, Header, Divider, Button, Icon} from 'semantic-ui-react';
 import {Field, reduxForm} from 'redux-form';
 import moment from 'moment';
-import DateInput from "../../../app/common/form/DateInput";
+import DateInput from '../../../app/common/form/DateInput';
 import PlaceInput from "../../../app/common/form/PlaceInput";
 import TextInput from "../../../app/common/form/TextInput";
 import RadioInput from "../../../app/common/form/RadioInput";

@@ -3,9 +3,9 @@ import React from 'react';
 import { Form, Label } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 
-
-const DateInput = ({
+const DateEvent = ({
   input: { value, onChange, onBlur },
   width,
   placeholder,
@@ -25,6 +25,7 @@ const DateInput = ({
             : null
         }
         onChange={onChange}
+        minDate={moment().toDate()}
         onBlur={(e, val) => onBlur(val)}
         onChangeRaw={e => e.preventDefault()}
       />
@@ -37,7 +38,4 @@ const DateInput = ({
   );
 };
 
-export default DateInput
-
-
-
+export default DateEvent

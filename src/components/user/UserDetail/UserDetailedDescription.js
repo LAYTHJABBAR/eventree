@@ -54,7 +54,7 @@ const UserDetailedDescription = ({ profile }) => {
                   </Item>
                 ))
               ) : (
-                <p style={{color: 'red'}}>None</p>
+                <span style={{color: 'red'}} >None</span>
               )}
             </List>
             </Header>

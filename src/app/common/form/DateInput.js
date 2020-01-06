@@ -3,7 +3,7 @@ import React from 'react';
 import { Form, Label } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import moment from 'moment'
 
 const DateInput = ({
   input: { value, onChange, onBlur },
@@ -25,6 +25,7 @@ const DateInput = ({
             : null
         }
         onChange={onChange}
+        maxDate={moment().toDate()}
         onBlur={(e, val) => onBlur(val)}
         onChangeRaw={e => e.preventDefault()}
       />

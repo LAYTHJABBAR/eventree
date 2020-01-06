@@ -45,7 +45,7 @@ const EventDetailHeader = ({
                   style={{ color: "white" }}
                 />
                 <p style={{ color: "yellow" }}>
-                  {event.date && format(event.date.toDate(), "EEEE do LLLL")}
+                  {event.date && format(event.date.toDate(), "EEEE do LLLL Y")}
                 </p>
                 <p>
                   Hosted by:{" "}

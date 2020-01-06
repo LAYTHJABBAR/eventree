@@ -14,7 +14,7 @@ import TextInput from "../../../app/common/form/TextInput";
 import TextArea from "../../../app/common/form/TextArea";
 import SelectInput from "../../../app/common/form/SelectInput";
 import PlaceInput from "../../../app/common/form/PlaceInput";
-import DateInput from "../../../app/common/form/DateInput";
+import DateEvent from "../../../app/common/form/EventDate";
 import { withFirestore } from "react-redux-firebase";
 import {toastr} from "react-redux-toastr"
 const google = window.google;
@@ -252,7 +252,7 @@ class EventForm extends Component {
               />
               <Field
                 name="date"
-                component={DateInput}
+                component={DateEvent}
                 dateFormat="dd LLL yyyy h:mm a"
                 placeholder="Event date"
                 showTimeSelect

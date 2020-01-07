@@ -26,7 +26,7 @@ const LoginForm = ({login, handleSubmit, error, submitting}) => {
           placeholder="password"
         />
 
-        {error === `The email address is badly formatted.` && <Label basic color='red'>No User Registered Under this Email</Label>} 
+        {error === `The email address is badly formatted.` && <Label basic color='red'>Wrong Email Format</Label>} 
         {error === `There is no user record corresponding to this identifier. The user may have been deleted.` && <Label basic color='red'>No User Registered Under this Email</Label>}
         {error === `signInWithEmailAndPassword failed: Second argument "password" must be a valid string.` && <Label basic color='red'>Wrong password</Label>}
         {error === `signInWithEmailAndPassword failed: First argument "email" must be a valid string.` && <Label basic color='red'>Please enter a valid Email</Label>} 

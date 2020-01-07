@@ -3,7 +3,7 @@ describe("Navigation", () => {
     cy.visit("/events");
   });
 
-  it("should create an event", () => {
+  xit("should create an event", () => {
     cy.visit("/events");
     cy.get(".ui.yellow.button")
       .should("be.visible")
@@ -30,5 +30,20 @@ describe("Navigation", () => {
 
     cy.get('input[name="title"]').click();
     cy.get(".ui.purple.button").click();
+  });
+
+  it("should edit an event", () => {
+    cy.visit("/events");
+    cy.contains("Test Event").parent().parent().parent().parent().parent().children().contains("View").click();
+    cy.contains("Manage Event").click()
+    cy.get(".ui.selection.dropdown")
+      .click()
+      .get(".text").contains('Film')
+      .click();
+
+      cy.get('textarea[name="description"]').type(" Updated");
+
+
+      cy.get(".ui.purple.button").click();
   });
 });

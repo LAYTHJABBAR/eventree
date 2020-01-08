@@ -56,7 +56,7 @@ class EventDetailPage extends Component {
       });
     const isHost = event.hostUid === auth.uid;
     const isGoing = attendees && attendees.some(a => a.id === auth.uid)
-
+    
     if (Object.keys(event).length === 0) return <NotFound />
 
     return (

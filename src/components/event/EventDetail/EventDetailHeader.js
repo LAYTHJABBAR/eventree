@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import { Segment, Image, Item, Header, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { format } from "date-fns";
-
+import { format, setSeconds } from "date-fns";
 
 const eventImageStyle = {
   filter: "brightness(60%)"
@@ -26,6 +25,8 @@ const EventDetailHeader = ({
   openModal,
   authenticated
 }) => {
+  console.log(event.date.seconds * 1000)
+  console.log(Date.now().valueOf(setSeconds))
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: "0" }}>
@@ -68,9 +69,9 @@ const EventDetailHeader = ({
       <Segment attached="bottom" clearing>
         {!isHost && (
           <Fragment>
-            {isGoing ? (
-              <Button onClick={() => cancelGoingToEvent(event)}>
-                Canel my Place
+            {isGoing  ? (
+              <Button disabled={((Date.now()) > (event.date.seconds * 1000))} onClick={() => cancelGoingToEvent(event)}>
+               CANCEL MY PLACE
               </Button>
             ) : (
               

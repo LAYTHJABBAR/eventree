@@ -97,8 +97,8 @@ export const setMainPhoto = photo => async (dispatch, getState) => {
   const firestore = firebase.firestore();
   const user = firebase.auth().currentUser;
   const today = new Date();
-  let userDocRef = firestore.collection('users').doc(user.uid);
-  let eventAttendeeRef = firestore.collection('event_attendee');
+  let userDocRef = firestore.collection("users").doc(user.uid);
+  let eventAttendeeRef = firestore.collection("event_attendee");
   try {
     dispatch(asyncActionStart());
     let batch = firestore.batch();
@@ -108,15 +108,14 @@ export const setMainPhoto = photo => async (dispatch, getState) => {
     });
 
     let eventQuery = await eventAttendeeRef
-      .where('userUid', '==', user.uid)
-      .where('eventDate', '>=', today);
-      
+      .where("userUid", "==", user.uid)
+      .where("eventDate", ">=", today);
 
     let eventQuerySnap = await eventQuery.get();
 
     for (let i = 0; i < eventQuerySnap.docs.length; i++) {
       let eventDocRef = await firestore
-        .collection('events')
+        .collection("events")
         .doc(eventQuerySnap.docs[i].data().eventId);
       let event = await eventDocRef.get();
       if (event.data().hostUid === user.uid) {
@@ -135,7 +134,7 @@ export const setMainPhoto = photo => async (dispatch, getState) => {
   } catch (error) {
     console.log(error);
     dispatch(asyncActionError());
-    throw new Error('Problem setting main photo');
+    throw new Error("Problem setting main photo");
   }
 };
 
@@ -169,25 +168,6 @@ export const goingToEvent = event => async (
   } catch (error) {
     console.log(error);
     toastr.error("Fail", "Please login to sinup for the event");
-  }
-};
-export const canelGoingToEvent = event => async (
-  dispatch,
-  getState,
-  { getFirestore, getFirebase }
-) => {
-  const firestore = getFirestore();
-  const firebase = getFirebase();
-  const user = firebase.auth().currentUser;
-  try {
-    await firestore.update(`events/${event.id}`, {
-      [`attendees.${user.uid}`]: firestore.FieldValue.delete()
-    });
-    await firestore.delete(`event_attendee/${event.id}_${user.id}`);
-    toastr.success("done", "you removed from the event going list");
-  } catch (error) {
-    console.log(error);
-    toastr.error("fail", "cancelling faild");
   }
 };
 

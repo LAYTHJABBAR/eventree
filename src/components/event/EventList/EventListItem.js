@@ -61,7 +61,7 @@ export default class EventListItem extends Component {
           </List>
         </Segment>
         <Segment clearing>
-          <span>{event.description}</span>
+          <span style={{overflowWrap: 'break-word'}}>{event.description}</span>
           
           <Button
             as={Link}

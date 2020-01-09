@@ -34,7 +34,38 @@ describe("Navigation", () => {
 
   it("should edit an event", () => {
     cy.visit("/events");
-    cy.contains("Test Event").parent().parent().parent().parent().parent().children().contains("View").click();
+    // cy.contains('event 104').scrollIntoView()
+    cy.contains('event 104')
+
+    cy.contains("Category:")
+      .parent()
+      .parent()
+      .parent()
+      .parent()
+      .parent()
+      .parent()
+      .parent();
+    cy.contains("event 104")
+      .scrollIntoView()
+      .parent()
+      .parent()
+      .parent()
+      .parent()
+      .parent()
+      .contains("View")
+      .click();
+
+    // cy.scrollTo('bottom')
+
+    // .parent().parent().parent().parent().parent().parent().parent()
+
+    // cy.contains("Category:")
+    // .children()
+
+    // cy.get("test event 2")
+    // .contains("View").click();
+
+
     cy.contains("Manage Event").click()
     cy.get(".ui.selection.dropdown")
       .click()
@@ -42,7 +73,6 @@ describe("Navigation", () => {
       .click();
 
       cy.get('textarea[name="description"]').type(" Updated");
-
 
       cy.get(".ui.purple.button").click();
   });

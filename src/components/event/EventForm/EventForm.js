@@ -6,7 +6,8 @@ import {
   combineValidators,
   composeValidators,
   isRequired,
-  hasLengthGreaterThan
+  hasLengthGreaterThan,
+  hasLengthLessThan
 } from "revalidate";
 import { Segment, Form, Button, Grid, Header } from "semantic-ui-react";
 import { createEvent, updateEvent, cancelToggle } from "../eventActions";
@@ -16,7 +17,7 @@ import SelectInput from "../../../app/common/form/SelectInput";
 import PlaceInput from "../../../app/common/form/PlaceInput";
 import DateEvent from "../../../app/common/form/EventDate";
 import { withFirestore } from "react-redux-firebase";
-import {toastr} from "react-redux-toastr";
+import { toastr } from "react-redux-toastr";
 
 const google = window.google;
 
@@ -39,7 +40,7 @@ const mapState = (state, ownProps) => {
     loading: state.async.loading
   };
 };
-let cancelGoing= event => async (
+let cancelGoing = event => async (
   dispatch,
   getState,
   { getFirestore, getFirebase }
@@ -49,7 +50,6 @@ let cancelGoing= event => async (
   const user = firebase.auth().currentUser;
   try {
     await firestore.update(`events/${event.id}`, {
-
       [`attendees`]: firestore.FieldValue.delete()
     });
     await firestore.delete(`event_attendee/${event.id}_${user.uid}`);
@@ -70,14 +70,13 @@ const goingToEvent = event => async (
   const user = firebase.auth().currentUser;
   try {
     await firestore.update(`events/${event.id}`, {
-      [`attendees`]:[`${user.uid}`],
+      [`attendees`]: [`${user.uid}`],
       [`attendees.${user.uid}`]: {
-       displayName: event.hostedBy,
-       going: true,
-       host: true,
-       joinDate: new Date(),
-       photoURL: event.hostPhotoURL
-        
+        displayName: event.hostedBy,
+        going: true,
+        host: true,
+        joinDate: new Date(),
+        photoURL: event.hostPhotoURL
       }
     });
     await firestore.set(`event_attendee/${event.id}_${user.uid}`, {
@@ -88,7 +87,6 @@ const goingToEvent = event => async (
     });
     toastr.success("done", "Host signed up to the event");
   } catch (error) {
-     
     console.log(error);
     toastr.error("Fail", "Please login to signup for the event");
   }
@@ -99,8 +97,7 @@ const actions = {
   updateEvent,
   cancelToggle,
   cancelGoing,
-  goingToEvent,
- 
+  goingToEvent
 };
 
 const validate = combineValidators({
@@ -108,32 +105,33 @@ const validate = combineValidators({
   category: isRequired({ message: "The category is required" }),
   description: composeValidators(
     isRequired({ message: "Please enter a description" }),
+    hasLengthLessThan(250)({
+      message: "Description needs to be less than 250 characters"
+    }),
     hasLengthGreaterThan(4)({
       message: "Description needs to be at least 5 characters"
     })
   )(),
   city: isRequired("city"),
   venue: isRequired("venue"),
-  date: isRequired("date") 
+  date: isRequired("date")
 });
 
 const category = [
-  { key: 'Drinks', text: 'Drinks', value: 'Drinks' },
-  { key: 'Culture', text: 'Culture', value: 'Culture' },
-  { key: 'Film', text: 'Film', value: 'Film' },
-  { key: 'Food', text: 'Food', value: 'Food' },
-  { key: 'Music', text: 'Music', value: 'Music' },
-  { key: 'Travel', text: 'Travel', value: 'Travel' },
-  {key: 'Sport', text: 'Sport', value: 'Sport'},
-  {key: 'Conference', text: 'Conference', value: 'Conference'},
-  {key: 'Family', text: 'Family', value: 'Family'},
-  {key: 'Reading', text: 'Reading', value: 'Reading'},
-  {key: 'LifeStyle', text: 'LifeStyle', value: 'LifeStyle'},
-  {key: 'Dancing', text: 'Dancing', value: 'Dancing'},
-  {key: 'Fashion', text: 'Fashion', value: 'Fashion'}
+  { key: "Drinks", text: "Drinks", value: "Drinks" },
+  { key: "Culture", text: "Culture", value: "Culture" },
+  { key: "Film", text: "Film", value: "Film" },
+  { key: "Food", text: "Food", value: "Food" },
+  { key: "Music", text: "Music", value: "Music" },
+  { key: "Travel", text: "Travel", value: "Travel" },
+  { key: "Sport", text: "Sport", value: "Sport" },
+  { key: "Conference", text: "Conference", value: "Conference" },
+  { key: "Family", text: "Family", value: "Family" },
+  { key: "Reading", text: "Reading", value: "Reading" },
+  { key: "LifeStyle", text: "LifeStyle", value: "LifeStyle" },
+  { key: "Dancing", text: "Dancing", value: "Dancing" },
+  { key: "Fashion", text: "Fashion", value: "Fashion" }
 ];
-
-
 
 class EventForm extends Component {
   state = {
@@ -145,12 +143,12 @@ class EventForm extends Component {
     const { firestore, match } = this.props;
     await firestore.setListener(`events/${match.params.id}`);
   }
-  
+
   async componentWillUnmount() {
     const { firestore, match } = this.props;
     await firestore.unsetListener(`events/${match.params.id}`);
   }
-  
+
   onFormSubmit = async values => {
     values.venueLatLng = this.state.venueLatLng;
     try {
@@ -231,6 +229,7 @@ class EventForm extends Component {
               <Field
                 name="description"
                 component={TextArea}
+                style={{ overflowWrap: "break-word" }}
                 rows={3}
                 placeholder="Tell us about your event"
               />
@@ -264,7 +263,7 @@ class EventForm extends Component {
               <Button
                 disabled={invalid || submitting || pristine}
                 loading={loading}
-                color='purple'
+                color="purple"
                 type="submit"
               >
                 Submit
@@ -280,23 +279,30 @@ class EventForm extends Component {
               >
                 Cancel
               </Button>
-              {event.id && 
-              <Button
-                type="button"
-                color={event.cancelled ? "green" : "red"}
-                floated="right"
-                content={event.cancelled ? "Reactivate event" : "Cancel event"}
-                onClick={() => cancelToggle(!event.cancelled, event.id)}
-              />}
-              {(event.id && event.cancelled) && 
-              <Button
-              type="button"
-              color={(event.cancelled && event.attendees) ? "red" : "orange"}
-              content={event.attendees  ? "cancel attendes" : "add host"}
-              onClick={() => {(event.cancelled && event.attendees) ? cancelGoing(event) : goingToEvent(event)}}
-              floated='right'
-        />
-              }
+              {event.id && (
+                <Button
+                  type="button"
+                  color={event.cancelled ? "green" : "red"}
+                  floated="right"
+                  content={
+                    event.cancelled ? "Reactivate event" : "Cancel event"
+                  }
+                  onClick={() => cancelToggle(!event.cancelled, event.id)}
+                />
+              )}
+              {event.id && event.cancelled && (
+                <Button
+                  type="button"
+                  color={event.cancelled && event.attendees ? "red" : "orange"}
+                  content={event.attendees ? "cancel attendes" : "add host"}
+                  onClick={() => {
+                    event.cancelled && event.attendees
+                      ? cancelGoing(event)
+                      : goingToEvent(event);
+                  }}
+                  floated="right"
+                />
+              )}
             </Form>
           </Segment>
         </Grid.Column>

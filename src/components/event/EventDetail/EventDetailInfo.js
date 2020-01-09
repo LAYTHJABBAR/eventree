@@ -13,7 +13,7 @@ const EventDetailInfo = ({ event }) => {
             <Icon size='large' color='black' name='info' />
           </Grid.Column>
           <Grid.Column width={16}>
-            <p>{event.description}</p>
+            <p style={{overflowWrap: 'break-word'}}>{event.description}</p>
           </Grid.Column>
         </Grid>
       </Segment>

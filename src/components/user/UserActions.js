@@ -167,7 +167,7 @@ export const goingToEvent = event => async (
     toastr.success("done", "You have signed up to the event");
   } catch (error) {
     console.log(error);
-    toastr.error("Fail", "Please login to sinup for the event");
+    toastr.error("Fail", "Please login to signup for the event");
   }
 };
 

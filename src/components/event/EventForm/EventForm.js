@@ -16,7 +16,8 @@ import SelectInput from "../../../app/common/form/SelectInput";
 import PlaceInput from "../../../app/common/form/PlaceInput";
 import DateEvent from "../../../app/common/form/EventDate";
 import { withFirestore } from "react-redux-firebase";
-import {toastr} from "react-redux-toastr"
+import {toastr} from "react-redux-toastr";
+
 const google = window.google;
 
 const mapState = (state, ownProps) => {
@@ -87,8 +88,9 @@ const goingToEvent = event => async (
     });
     toastr.success("done", "Host signed up to the event");
   } catch (error) {
+     
     console.log(error);
-    toastr.error("Fail", "Please login to sinup for the event");
+    toastr.error("Fail", "Please login to signup for the event");
   }
 };
 
@@ -97,7 +99,8 @@ const actions = {
   updateEvent,
   cancelToggle,
   cancelGoing,
-  goingToEvent
+  goingToEvent,
+ 
 };
 
 const validate = combineValidators({

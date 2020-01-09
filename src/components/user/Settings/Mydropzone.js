@@ -33,7 +33,7 @@ const MyDropzone = ({ setFiles }) => {
         </div>
       ) : (
         <div className="dropZone textup">
-          <h3><p>
+          <h3><p style={{textAlign: 'center'}}>
             Drag and drop the photo here, or click to select it 
           </p></h3>
           <Icon className="upload" size="huge"></Icon>

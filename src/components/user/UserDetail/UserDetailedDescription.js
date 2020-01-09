@@ -28,7 +28,7 @@ const UserDetailedDescription = ({ profile }) => {
               <span style={{color: 'purple'}}>Originally from:</span> <strong>{profile.origin || "None"}</strong>
             </p>
             <p>
-            <span style={{color: 'purple'}}>Member Since:</span>{" "}
+            <span style={{color: 'purple'}}>Member since:</span>{" "}
               <strong>
                 {profile.createdAt &&
                   format(profile.createdAt.toDate(), "dd LLL yyyy")}

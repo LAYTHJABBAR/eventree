@@ -17,11 +17,12 @@ const UserDetailedDescription = ({ profile }) => {
         <Grid columns={2}>
           <Grid.Column width={12}>
             <Label
+            style={{textTransform: 'uppercase'}}
               icon="book"
               content={profile.displayName}
               color="red"
             ></Label>
-            <p>
+            <p><br></br>
               <span style={{color: 'purple'}}>I am a:</span> <strong>{profile.occupation || "None"}</strong>
             </p>
             <p >

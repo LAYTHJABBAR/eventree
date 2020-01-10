@@ -24,12 +24,14 @@ const UserDetailedHeader = ({ profile, isCurrentUser }) => {
             </Fragment>
 
             <Item.Content verticalAlign='bottom'>
-              <Header as='h1'>{profile.displayName}</Header>
+              <Header as='h1' style={{textTransform: 'uppercase'}}>{profile.displayName}</Header>
+              <br />
               <br />
               <Header as='h3'>{profile.occupation}</Header>
               <br />
+              <br />
               <Header as='h3'>
-                {age + ' years old' || 'unknown age'}, Lives in{' '}
+                {age + ' Years old' || 'Unknown age'}, Lives in{' '}
                 {profile.city || 'unknown city'}
               </Header>
             </Item.Content>

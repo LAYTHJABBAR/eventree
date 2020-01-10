@@ -26,7 +26,7 @@ const MyDropzone = ({ setFiles }) => {
       <input {...getInputProps()} />
       {isDragActive ? (
         <div className="dropZone1">
-          <h3><p>
+          <h3><p style={{textAlign: 'center'}}>
             Drop the photo here 
           </p></h3>
           <Icon className="picture" size="huge"></Icon>

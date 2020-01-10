@@ -24,5 +24,10 @@ describe("Test Secuirty Feature for the APP if trying to access restricted pages
     cy.visit('/settings/account')
     cy.get('.description').contains('Please either login or register to see this page')
   })
-
+ it('Access Exsitting Event and trying to join without signing in', () => {
+   cy.visit('/events/tldmJHjSOowEUZY5nLY7')
+   cy.get('.ui.purple.button').contains('JOIN THIS EVENT').click()
+   cy.get('.toastr.animated.rrt-error:visible').contains('Please login to signup for the event')
+ 
+ })
 })

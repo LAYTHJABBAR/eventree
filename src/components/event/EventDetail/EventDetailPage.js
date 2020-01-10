@@ -74,7 +74,7 @@ class EventDetailPage extends Component {
           <EventDetailInfo event={event} />
         </Grid.Column>
         <Grid.Column width={6}>
-          <EventDetailSideBar attendees={attendees} />
+          <EventDetailSideBar attendees={attendees} isHost={isHost} />
         </Grid.Column>
       </Grid>
     );

@@ -8,6 +8,8 @@ import cuid from "cuid";
 import firebase from "../../app/config/firebase";
 import { FETCH_EVENTS } from "../event/eventConstants";
 
+
+
 export const updateProfile = user => async (
   dispatch,
   getState,
@@ -171,7 +173,7 @@ export const goingToEvent = event => async (
   }
 };
 
-export const cancelGoingToEvent = event => async (
+export const hostJoin = event => async (
   dispatch,
   getState,
   { getFirestore, getFirebase }
@@ -179,7 +181,34 @@ export const cancelGoingToEvent = event => async (
   const firestore = getFirestore();
   const firebase = getFirebase();
   const user = firebase.auth().currentUser;
+  const profile = getState().firebase.profile;
   try {
+    await firestore.update(`events/${event.id}`, {
+      [`hostPhotoURL`]: profile.photoURL || "/assets/user.png",
+      [`hostUid`]: user.uid,
+      [`hostedBy`]: profile.displayName,
+    });
+    await firestore.update(`events/${event.id}`, {
+      [`attendees.${user.uid}.host`]: true
+    });
+    toastr.success("Done", "Now you are the host for this event");
+  } catch (error) {
+    console.log(error);
+    toastr.error("Fail", "there is an error to add you as a host");
+  }
+};
+
+export const cancelGoingToEvent = event => async (
+  dispatch,
+  getState,
+  { getFirestore, getFirebase }
+) => {
+  
+  const firestore = getFirestore();
+  const firebase = getFirebase();
+  const user = firebase.auth().currentUser;
+  try {
+   
     await firestore.update(`events/${event.id}`, {
       [`attendees.${user.uid}`]: firestore.FieldValue.delete()
     });

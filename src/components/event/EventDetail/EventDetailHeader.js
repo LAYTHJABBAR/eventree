@@ -16,15 +16,22 @@ const eventImageTextStyle = {
   color: "white"
 };
 
+
 const EventDetailHeader = ({
   event,
   isHost,
   isGoing,
+  hostJoin,
   goingToEvent,
   cancelGoingToEvent,
   openModal,
   authenticated
 }) => {
+
+
+
+  
+  
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: "0" }}>
@@ -94,6 +101,20 @@ const EventDetailHeader = ({
             Manage Event
           </Button>
         )}
+
+{(event.id && !event.cancelled && event.hostUid === false && event.attendees && isGoing) && (
+  
+                <Button
+                  type="button"
+                  color={"orange"}
+                  content={ "Add yourself as a host"}
+                  onClick={() => {
+                   hostJoin(event)
+                  }}
+                  floated="right"
+                />
+              )
+}
        
       </Segment>
     </Segment.Group>

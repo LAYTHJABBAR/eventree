@@ -7,7 +7,7 @@ import EventDetailInfo from "./EventDetailInfo";
 import EventDetailSideBar from "./EventDetailSideBar";
 import { withFirestore } from "react-redux-firebase";
 import { objectToArray } from "../../../app/common/util/helpers";
-import {goingToEvent, cancelGoingToEvent} from '../../user/UserActions'
+import {goingToEvent, cancelGoingToEvent, hostJoin} from '../../user/UserActions'
 import NotFound from "../../../app/layout/NotFound";
 
 const mapState = (state, ownProps) => {
@@ -28,6 +28,7 @@ const mapState = (state, ownProps) => {
   };
 };
 const actions = {
+  hostJoin,
   goingToEvent,
   cancelGoingToEvent
 };
@@ -46,6 +47,7 @@ class EventDetailPage extends Component {
       event,
       auth,
       goingToEvent,
+      hostJoin,
       cancelGoingToEvent,
       openModal,
       aunthenticated
@@ -66,6 +68,7 @@ class EventDetailPage extends Component {
             event={event}
             isGoing={isGoing}
             isHost={isHost}
+            hostJoin = {hostJoin}
             goingToEvent={goingToEvent}
             cancelGoingToEvent={cancelGoingToEvent}
             aunthenticated={aunthenticated}

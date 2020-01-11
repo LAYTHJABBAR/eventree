@@ -50,7 +50,8 @@ let cancelGoing = event => async (
   const user = firebase.auth().currentUser;
   try {
     await firestore.update(`events/${event.id}`, {
-      [`attendees`]: firestore.FieldValue.delete()
+      [`attendees`]: firestore.FieldValue.delete(),
+      [`hostUid`]: false
     });
     await firestore.delete(`event_attendee/${event.id}_${user.uid}`);
     toastr.success("done", "Attendees Removed From the Event");
@@ -77,7 +78,9 @@ const goingToEvent = event => async (
         host: true,
         joinDate: new Date(),
         photoURL: event.hostPhotoURL
-      }
+      },
+      [`hostUid`]: `${user.uid}`
+
     });
     await firestore.set(`event_attendee/${event.id}_${user.uid}`, {
       eventId: event.id,
@@ -97,6 +100,7 @@ const actions = {
   updateEvent,
   cancelToggle,
   cancelGoing,
+  
   goingToEvent
 };
 

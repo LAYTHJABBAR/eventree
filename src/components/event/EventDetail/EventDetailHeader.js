@@ -102,7 +102,7 @@ const EventDetailHeader = ({
           </Button>
         )}
 
-{(event.id && !event.cancelled && event.hostUid === false && event.attendees && isGoing) && (
+{(event.id && !event.cancelled && event.hostedBy === false && event.attendees && isGoing) && (
   
                 <Button
                   type="button"

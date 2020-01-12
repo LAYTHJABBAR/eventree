@@ -1,11 +1,15 @@
 import React, { Fragment } from "react";
-import { Segment, Image, Item, Header, Button } from "semantic-ui-react";
+import { Segment, Image, Item, Header, Button} from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { format} from "date-fns";
-
+import {toastr} from 'react-redux-toastr';
 const eventImageStyle = {
   filter: "brightness(60%)"
 };
+
+
+
+
 
 const eventImageTextStyle = {
   position: "absolute",
@@ -31,12 +35,30 @@ const EventDetailHeader = ({
 
   return (
     <Segment.Group>
+    
       <Segment basic attached="top" style={{ padding: "0" }}>
-        <Image
+        { event.cancelled ?  (
+
+          <Image
+            src={`/assets/${event.category}.jpg`}
+            fluid
+            style={eventImageStyle}
+            label={{
+              as: 'a',
+              color: 'red',
+              content: 'Event Cancelled',
+              icon: 'trush',
+              ribbon: true,
+            }}
+            />
+        ) : (
+          <Image
           src={`/assets/${event.category}.jpg`}
           fluid
           style={eventImageStyle}
-        />
+          />
+        )
+        }
 
         <Segment basic style={eventImageTextStyle}>
           <Item.Group>
@@ -71,7 +93,7 @@ const EventDetailHeader = ({
       <Segment attached="bottom" clearing>
       {((Date.now()) < (event.date.seconds * 1000)) && (
      <Fragment>
-        {(!isHost || !event.hostedBy ) && (
+        {((!isHost || !event.hostedBy) && !event.cancelled) && (
           <Fragment>
             {isGoing  ? (
               <Button  onClick={() => cancelGoingToEvent(event)} color = 'red'>
@@ -106,7 +128,8 @@ const EventDetailHeader = ({
                   color={"orange"}
                   content={ "Add Host To Event"}
                   onClick={() => {
-                   hostJoin(event)
+                    toastr.confirm('By Pressing OK you will be the Manager for this event',  { onOk: () => hostJoin(event),
+                      onCancel: () => console.log('CANCEL: clicked')});
                   }}
                   floated="right"
                 />
@@ -118,9 +141,10 @@ const EventDetailHeader = ({
   <Button
     type="button"
     color={"orange"}
-    content={ "Remove Host"}
+    content={ "Remove Managment Control"}
     onClick={() => {
-     cancelHostJoin(event)
+      toastr.confirm('Are you sure about that!, you Will loss the Managment Control by pressing ok',  { onOk: () => cancelHostJoin(event),
+        onCancel: () => console.log('CANCEL: clicked')});
     }}
     floated="right"
   />

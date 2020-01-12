@@ -300,10 +300,11 @@ class EventForm extends Component {
                 <Button
                   type="button"
                   color={event.cancelled && event.attendees ? "red" : "orange"}
-                  content={event.attendees ? "cancel attendes" : "add host"}
+                  content={event.attendees ? "Cancel attendes" : "Add host"}
                   onClick={() => {
                     event.cancelled && event.attendees
-                      ? cancelGoing(event)
+                      ?  toastr.confirm('Are you sure!! All the attendees will be removed',  { onOk: () => cancelGoing(event),
+                        onCancel: () => console.log('CANCEL: clicked')})
                       : goingToEvent(event);
                   }}
                   floated="right"

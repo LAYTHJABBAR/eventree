@@ -191,6 +191,12 @@ export const hostJoin = event => async (
     await firestore.update(`events/${event.id}`, {
       [`attendees.${user.uid}.host`]: true
     });
+    await firestore.set(`event_attendee/${event.id}_${user.uid}`, {
+      eventId: event.id,
+      userUid: user.uid,
+      eventDate: event.date,
+      host: true
+    });
     toastr.success("Done", "Now you are the host for this event");
   } catch (error) {
     console.log(error);

@@ -7,7 +7,7 @@ import EventDetailInfo from "./EventDetailInfo";
 import EventDetailSideBar from "./EventDetailSideBar";
 import { withFirestore } from "react-redux-firebase";
 import { objectToArray } from "../../../app/common/util/helpers";
-import {goingToEvent, cancelGoingToEvent, hostJoin} from '../../user/UserActions'
+import {goingToEvent, cancelGoingToEvent, hostJoin, cancelHostJoin} from '../../user/UserActions'
 import NotFound from "../../../app/layout/NotFound";
 
 const mapState = (state, ownProps) => {
@@ -28,6 +28,7 @@ const mapState = (state, ownProps) => {
   };
 };
 const actions = {
+  cancelHostJoin,
   hostJoin,
   goingToEvent,
   cancelGoingToEvent
@@ -48,13 +49,14 @@ class EventDetailPage extends Component {
       auth,
       goingToEvent,
       hostJoin,
+      cancelHostJoin,
       cancelGoingToEvent,
       openModal,
       aunthenticated
     } = this.props;
     const attendees =
       event && event.attendees && objectToArray(event.attendees).sort((a, b) => {
-        return a.joinDate - b.joinDate;
+   return (a.host === b.host) ? 0 : a.host? -1 : 1;
       });
     const isHost = event.hostUid === auth.uid;
     const isGoing = attendees && attendees.some(a => a.id === auth.uid)
@@ -65,10 +67,12 @@ class EventDetailPage extends Component {
       <Grid>
         <Grid.Column width={10}>
           <EventDetailHeader
+          attendees ={attendees}
             event={event}
             isGoing={isGoing}
             isHost={isHost}
             hostJoin = {hostJoin}
+            cancelHostJoin = {cancelHostJoin}
             goingToEvent={goingToEvent}
             cancelGoingToEvent={cancelGoingToEvent}
             aunthenticated={aunthenticated}

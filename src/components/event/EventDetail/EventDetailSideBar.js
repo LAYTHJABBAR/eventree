@@ -1,8 +1,11 @@
+
 import React, { Fragment } from 'react';
 import { Segment, Item, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-
 const EventDetailedSidebar = ({ attendees }) => {
+//   const myData = [].concat(attendees)
+//  .sort((a,b) => a.host > b.host)
+//  .map
   return (
     <Fragment>
       <Segment
@@ -18,16 +21,15 @@ const EventDetailedSidebar = ({ attendees }) => {
       </Segment>
       <Segment attached>
         <Item.Group divided>
-          {attendees &&
-            attendees.map(attendee => (
+          {attendees && attendees.map(attendee => (
               <Item key={attendee.id} style={{ position: 'relative' }}>
                 {attendee.host && (
-                 <Label
-                 style={{ position: 'relative' }}
-                 color='green'
-               >
-                 Host
-               </Label>
+                   <Label
+                   style={{ position: 'relative' }}
+                   color='green'
+                 >
+                   Host
+                 </Label>
                 )}
                 <Item.Image size='tiny' src={attendee.photoURL} />
                 <Item.Content verticalAlign='middle'>
@@ -46,3 +48,4 @@ const EventDetailedSidebar = ({ attendees }) => {
 };
 
 export default EventDetailedSidebar;
+

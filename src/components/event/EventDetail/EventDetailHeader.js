@@ -22,16 +22,13 @@ const EventDetailHeader = ({
   isHost,
   isGoing,
   hostJoin,
+  cancelHostJoin,
   goingToEvent,
   cancelGoingToEvent,
   openModal,
   authenticated
 }) => {
 
-
-
-  
-  
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: "0" }}>
@@ -74,10 +71,10 @@ const EventDetailHeader = ({
       <Segment attached="bottom" clearing>
       {((Date.now()) < (event.date.seconds * 1000)) && (
      <Fragment>
-        {!isHost && (
+        {(!isHost || !event.hostedBy ) && (
           <Fragment>
             {isGoing  ? (
-              <Button  onClick={() => cancelGoingToEvent(event)}>
+              <Button  onClick={() => cancelGoingToEvent(event)} color = 'red'>
                CANCEL MY PLACE
               </Button>
             ) : (
@@ -102,12 +99,12 @@ const EventDetailHeader = ({
           </Button>
         )}
 
-{(event.id && !event.cancelled && event.hostedBy === false && event.attendees && isGoing) && (
+{(event.id && !event.cancelled && (event.hostedBy ===(false || null)) && event.attendees && isGoing) && (
   
                 <Button
                   type="button"
                   color={"orange"}
-                  content={ "Add yourself as a host"}
+                  content={ "Add Host To Event"}
                   onClick={() => {
                    hostJoin(event)
                   }}
@@ -116,6 +113,19 @@ const EventDetailHeader = ({
               )
 }
        
+{(event.id && !event.cancelled && (event.hostedBy !== (false || null) )  && event.attendees && isGoing && isHost) && (
+  
+  <Button
+    type="button"
+    color={"orange"}
+    content={ "Remove Host"}
+    onClick={() => {
+     cancelHostJoin(event)
+    }}
+    floated="right"
+  />
+)
+}
       </Segment>
     </Segment.Group>
   );

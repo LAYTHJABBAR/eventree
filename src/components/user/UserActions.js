@@ -198,6 +198,32 @@ export const hostJoin = event => async (
   }
 };
 
+
+export const cancelHostJoin = event => async (
+  dispatch,
+  getState,
+  { getFirestore, getFirebase }
+) => {
+  const firestore = getFirestore();
+  const firebase = getFirebase();
+  const user = firebase.auth().currentUser;
+   
+  try {
+    await firestore.update(`events/${event.id}`, {
+      [`hostPhotoURL`]: null,
+      [`hostUid`]: null,
+      [`hostedBy`]: null,
+    });
+    await firestore.update(`events/${event.id}`, {
+      [`attendees.${user.uid}.host`]: false
+    });
+    toastr.success("Done", "you are not anymore the host for this Event");
+  } catch (error) {
+    console.log(error);
+    toastr.error("Fail", "there is an error to add you as a host");
+  }
+};
+
 export const cancelGoingToEvent = event => async (
   dispatch,
   getState,

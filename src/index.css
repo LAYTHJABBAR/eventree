@@ -1,5 +1,22 @@
 body {
-  background-color: rgba(241, 202, 245, 0.329) !important;
+  background-color: rgba(218, 112, 245, 0.329) !important;
+
+    /* Location of the image */
+    background-image: url(EVENTREE.png);
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: left;
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+    /* Background image is fixed in the viewport so that it doesn't move when
+       the content's height is greater than the image's height */
+    background-attachment: fixed;
+    /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: 300px;
+    margin-right: 180px;
+    
+
+  
 }
 
 /*timepicker style*/
@@ -99,12 +116,6 @@ body {
   margin-left: 0.5em;
 }
 
-/*chat comments*/
-
-.ui.comments .comment .comments {
-  padding-bottom: 0 !important;
-  padding-left: 2em !important;
-}
 
 /* dropzone styles */
 .dropZone {

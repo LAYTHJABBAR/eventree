@@ -4,7 +4,7 @@ describe("Register and log in", () => {
     cy.wait(1000)
   });
 
-  it("should navigate to Register and register new accout ", () => {
+  it("should navigate to Register and register new account ", () => {
     cy.get(".ui.basic.inverted.button")
       .contains("Register")
       .click();
@@ -149,9 +149,10 @@ describe("Navigate to the event page and create event", () => {
     cy.contains("Calgary Tower").click();
     cy.get('input[placeholder="Event date"]').click();
     cy.get(
-      ".react-datepicker__day.react-datepicker__day--011.react-datepicker__day--weekend"
+      ".react-datepicker__day.react-datepicker__day--021"
     ).click();
     cy.get('input[name="title"]').click();
+    cy.wait(2000)
     cy.get(".ui.purple.button").click();
   });
 });

@@ -16,7 +16,7 @@ export default class EventListItem extends Component {
             <Item>
               <Item.Image size="tiny" src={event.hostPhotoURL} />
               <Item.Content>
-                <Item.Header as={Link} to={`/events/${event.id}`}>
+                <Item.Header as={Link} to={`/events/${event.id}`} style={{textTransform: 'uppercase'}}>
                   {" "}
                   {event.title}
                 </Item.Header>
@@ -25,7 +25,7 @@ export default class EventListItem extends Component {
                   <Link
                     as={Link}
                     to={`/profile/${event.hostUid}`}
-                    style={{ color: "red" }}
+                    style={{ color: "red" , textTransform: 'uppercase' }}
                   >
                     {event.hostedBy}
                   </Link>

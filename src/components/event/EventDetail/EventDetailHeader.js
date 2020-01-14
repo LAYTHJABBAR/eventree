@@ -67,7 +67,7 @@ const EventDetailHeader = ({
                 <Header
                   size="huge"
                   content={event.title}
-                  style={{ color: "white" }}
+                  style={{ color: "white" , textTransform: 'uppercase'}}
                 />
                 <p style={{ color: "yellow" }}>
                   {event.date && format(event.date.toDate(), "EEEE do LLLL Y")}
@@ -141,9 +141,9 @@ const EventDetailHeader = ({
   <Button
     type="button"
     color={"orange"}
-    content={ "Remove Managment Control"}
+    content={ "Remove as Event Manager"}
     onClick={() => {
-      toastr.confirm('Are you sure about that!, you Will loss the Managment Control by pressing ok',  { onOk: () => cancelHostJoin(event),
+      toastr.confirm('Are you sure about that!, you will lose authority to manage the Event by pressing ok',  { onOk: () => cancelHostJoin(event),
         onCancel: () => console.log('CANCEL: clicked')});
     }}
     floated="right"

@@ -1,6 +1,20 @@
 body {
-  background-color: rgba(218, 112, 245, 0.329) !important;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 10000% 10000%;
  
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 /*timepicker style*/
@@ -26,9 +40,7 @@ body {
   align-items: center;
   background-image: linear-gradient(
           113deg,
-          rgb(104, 5, 129) 0%,
-          rgb(116, 28, 151) 69%,
-          rgb(193, 13, 238) 89%
+          
   ) !important;
   height: 100vh;
 }
@@ -72,10 +84,11 @@ body {
 .ui.fixed.menu {
   background-image: linear-gradient(
           135deg,
-          rgb(104, 5, 129) 0%,
-          rgb(116, 28, 151) 69%,
+          rgb(183, 67, 212) 0%,
+          rgb(196, 95, 236) 69%,
           rgb(193, 13, 238) 89%
   ) !important;
+  opacity: .7;
 }
 
 .ui.main.container,

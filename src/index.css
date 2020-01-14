@@ -1,10 +1,10 @@
 body {
-  background-color: rgba(218, 112, 245, 0.329) !important;
+  background-color: rgba(193, 13, 238, 0.329) !important;
 
     /* Location of the image */
     background-image: url(EVENTREE.png);
     /* Background image is centered vertically and horizontally at all times */
-    background-position: left;
+    background-position: left bottom;
     /* Background image doesn't tile */
     background-repeat: no-repeat;
     /* Background image is fixed in the viewport so that it doesn't move when
@@ -12,9 +12,10 @@ body {
     background-attachment: fixed;
     /* This is what makes the background image rescale based
        on the container's size */
-    background-size: 300px;
-    margin-right: 180px;
+    background-size: 350px;
+    margin-right: 160px;
     
+
 
   
 }

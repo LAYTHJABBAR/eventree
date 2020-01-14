@@ -4,7 +4,7 @@ describe("Register and log in", () => {
     cy.wait(1000)
   });
 
-  it("should navigate to Register and register new account ", () => {
+  it("should navigate to Register and register new accout ", () => {
     cy.get(".ui.basic.inverted.button")
       .contains("Register")
       .click();
@@ -152,7 +152,6 @@ describe("Navigate to the event page and create event", () => {
       ".react-datepicker__day.react-datepicker__day--021"
     ).click();
     cy.get('input[name="title"]').click();
-    cy.wait(2000)
     cy.get(".ui.purple.button").click();
   });
 });

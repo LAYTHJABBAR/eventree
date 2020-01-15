@@ -24,47 +24,44 @@ Users have profile pages where they can view a list of events they have created 
 ![Alt Text](https://github.com/samirparab2019/eventree/blob/master/docs/video2-events.gif)
 
 ## Features
-* User authentication
-  * Create new user
-  * Validates email and password for login
+### Validation
+ - Email and password are validated on registration and login
 
-* User Profile
-  * Input date of birth, gender and home town
+### All users (general public) can:
+- Register with their username, email address and password
+- View a list of recent event activities
+- View a list of all events
+- Open an event to view its details
+- View a map of an event's location
+- See a list of an event's attendees
 
-* About Me
-  * For users to enter additional information
+### In addition, registered users can also:
+- Log in with a valid email address and password
+- Create, update and cancel events
+- Join upcoming events
+- Cancel their place at upcoming events
+- Remove themselves as host of an event
+- Take over as host of an event having no host
+- View the profile page of any user
 
-* My Photos
- * Upload photos, edit photos, and select main profile photo
-
-### Settings dashboard
-
-* Users can view and edit their profile:
-  * All, Past, Future and Events Hosted
-  * Profile images
-
-## Events
-* Ceate events page
- * input event name, category, description, city, venue, date
-* Event details page
- * View attendees
- * Join an event
- * Show map
- * Cancel attendance
- * Manage event
- * Remove role as event manager
-Upload images
+## User Profiles
+### Registered users can:
+- View events they have signed for: All, Past, Future and Events Hosted
+- Edit their user profile information
+- Input their interests
+- Upload photos to their profile and edit profile photos
+- Change password
 
 ## Tech Stack
-Back end
+### Back end
 * NodeJS
 
-## Front-end
+### Front-end
 * React
 * Redux
 * Semantic-UI
 
-## Database
+### Database
 * Firestore / Firebase
 
 ## Public API

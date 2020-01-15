@@ -10,21 +10,19 @@ Users have profile pages where they can view a list of events they have created 
 
 ## Screenshots
 
-![Events list](/docs/01-events-list.png)
-![Event detail](/docs/02-event-detail.png)
-![Event map](/docs/03-event-map.png)
+### Events list
+!["Events list"](/docs/01-events-list.png)
+### Event detail
+!["Event detail"](/docs/02-event-detail.png)
+### Map of event venue
+!["Event map"](/docs/03-event-map.png)
 
 ## Videos
+### Authentication
 ![Alt Text](https://github.com/samirparab2019/eventree/blob/master/docs/My-Movie.gif)
+
+### Events
 ![Alt Text](https://github.com/samirparab2019/eventree/blob/master/docs/video2-events.gif)
-
-<video width="320" height="240" controls preload>
-  <source src="./docs/video1-users.mov" >
-</video>
-
-<video width="320" height="240" controls preload>
-  <source src="./docs/video2-events.mov" >
-</video>
 
 ## Features
 * User authentication

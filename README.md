@@ -25,32 +25,32 @@ Users have profile pages where they can view a list of events they have created 
 
 ## Features
 ### Validation
- - Email and password are validated on registration and login
+ * Email and password are validated on registration and login
 
 ### All users (general public) can:
-- Register with their username, email address and password
-- View a list of recent event activities
-- View a list of all events
-- Open an event to view its details
-- View a map of an event's location
-- See a list of an event's attendees
+* Register with their username, email address and password
+* View a list of recent event activities
+* View a list of all events
+* Open an event to view its details
+* View a map of an event's location
+* See a list of an event's attendees
 
 ### In addition, registered users can also:
-- Log in with a valid email address and password
-- Create, update and cancel events
-- Join upcoming events
-- Cancel their place at upcoming events
-- Remove themselves as host of an event
-- Take over as host of an event having no host
-- View the profile page of any user
+* Log in with a valid email address and password
+* Create, update and cancel events
+* Join upcoming events
+* Cancel their place at upcoming events
+* Remove themselves as host of an event
+* Take over as host of an event having no host
+* View the profile page of any user
 
 ## User Profiles
 ### Registered users can:
-- View events they have signed for: All, Past, Future and Events Hosted
-- Edit their user profile information
-- Input their interests
-- Upload photos to their profile and edit profile photos
-- Change password
+* View events they have signed for: All, Past, Future and Events Hosted
+* Edit their user profile information
+* Input their interests
+* Upload photos to their profile and edit profile photos
+* Change password
 
 ## Tech Stack
 ### Back end
@@ -114,3 +114,4 @@ Users have profile pages where they can view a list of events they have created 
   `https://cloud.google.com/maps-platform/` and `https://console.firebase.google.com`
 * Run `npm install` to install dependencies
 * Type `npm start` and navigate to `localhost:3000`
+* In another terminal, type `npm run cypress` for end-to-end testing

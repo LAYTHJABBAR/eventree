@@ -115,3 +115,11 @@ Users have profile pages where they can view a list of events they have created 
 * Run `npm install` to install dependencies
 * Type `npm start` and navigate to `localhost:3000`
 * In another terminal, type `npm run cypress` for end-to-end testing
+
+## Contributors
+
+* [Samir Parab](https://github.com/samirparab2019)
+* [Layth Jabbar](https://github.com/LAYTHJABBAR)
+* [Jamaal Ahmed](https://github.com/jamaal729)
+
+

@@ -73,6 +73,44 @@ Back end
 ## Testing
 * Cypress E2E
 
+## Node Dependencies
+    cuid
+    date-fns
+    firebase
+    google-map-react
+    moment
+    react
+    react-cropper
+    react-datepicker
+    react-dom
+    react-dropzone
+    react-infinite-scroller
+    react-lazyload
+    react-load-script
+    react-loadable
+    react-places-autocomplete
+    react-redux
+    react-redux-firebase
+    react-redux-toastr
+    react-router-dom
+    react-scripts
+    redux
+    redux-auth-wrapper
+    redux-firestore
+    redux-form
+    redux-thunk
+    revalidate
+    semantic-ui-react
+
+## Node Development Dependencies
+    testing-library/react
+    types/react-redux-toastr
+    types/react-router-dom
+    cypress
+    redux-devtools-extension
+    source-map-explorer
+    typescript
+
 ## Instructions
 * Checkout project from github
 * Update api keys for Google Maps and Firestore. These can be obtained from:

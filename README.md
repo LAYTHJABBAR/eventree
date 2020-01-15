@@ -14,6 +14,9 @@ Users have profile pages where they can view a list of events they have created 
 ![Event detail](/docs/02-event-detail.png)
 ![Event map](/docs/03-event-map.png)
 
+## Videos
+![Alt Text](https://github.com/samirparab2019/eventree/blob/master/docs/My-Movie.gif)
+![Alt Text](https://github.com/samirparab2019/eventree/blob/master/docs/video2-events.gif)
 
 <video width="320" height="240" controls preload>
   <source src="./docs/video1-users.mov" >

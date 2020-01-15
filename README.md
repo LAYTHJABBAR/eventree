@@ -1,6 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
 # EVENTREE
 React app for users to create and manage events. If you need to organize and keep track of attendees for an event, this web app provides an easy-to-use interface.
 
@@ -18,7 +17,7 @@ Users have profile pages where they can view a list of events they have created 
 !["Event map"](/docs/03-event-map.png)
 
 ## Videos
-### Authentication
+### Authentication and User Profile
 ![Alt Text](https://github.com/samirparab2019/eventree/blob/master/docs/My-Movie.gif)
 
 ### Events
@@ -73,3 +72,10 @@ Back end
 
 ## Testing
 * Cypress E2E
+
+## Instructions
+* Checkout project from github
+* Update api keys for Google Maps and Firestore. These can be obtained from:
+  `https://cloud.google.com/maps-platform/` and `https://console.firebase.google.com`
+* Run `npm install` to install dependencies
+* Type `npm start` and navigate to `localhost:3000`

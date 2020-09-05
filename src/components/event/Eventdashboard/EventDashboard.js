@@ -30,7 +30,7 @@ class EventDashboard extends Component {
 
   state = {
     moreEvents: false,
-    loadingInitial: true,
+    loadingInitial: false,
     loadedEvents: []
   };
 

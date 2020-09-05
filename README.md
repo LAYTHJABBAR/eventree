@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Live on [click here](https://cocky-bohr-f86217.netlify.app/events)
+
 # EVENTREE
 React app for users to create and manage events. If you need to organize and keep track of attendees for an event, this web app provides an easy-to-use interface.
 

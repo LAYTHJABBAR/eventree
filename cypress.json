@@ -1,5 +1,6 @@
 {
-  "baseUrl": "http://localhost:3000",
-  "viewportWidth": 960,
-  "viewportHeight": 1200
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+      "configFile": "reporter-config.json"
+  }
 }

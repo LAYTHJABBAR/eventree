@@ -1,6 +1,8 @@
 {
-  "reporter": "cypress-multi-reporters",
+  "reporter": "mochawesome",
   "reporterOptions": {
-      "configFile": "reporter-config.json"
+      "overwrite": false,
+      "html": false,
+      "json": true
   }
 }

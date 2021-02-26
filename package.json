@@ -42,7 +42,7 @@
     "eject": "react-scripts eject",
     "cypress": "cypress open -P .",
     "test:chrome": "cypress run --browser chrome",
-    "combine:report": "mochawesome-merge ./mochawesome-report/*.json -o index.json",
+    "combine:report": "mochawesome-merge cypress/results/json/*.json > index.json",
     "generate:report": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
   },
   "eslintConfig": {

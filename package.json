@@ -29,7 +29,11 @@
     "redux-form": "^7.4.3",
     "redux-thunk": "^2.3.0",
     "revalidate": "^1.2.0",
-    "semantic-ui-react": "^0.87.1"
+    "semantic-ui-react": "^0.87.1",
+    "cypress": "4.9.0",
+    "mochawesome": "6.1.1",
+     "mochawesome-merge": "4.1.0",
+     "mochawesome-report-generator": "5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

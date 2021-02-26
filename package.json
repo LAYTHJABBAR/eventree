@@ -64,5 +64,14 @@
     "redux-devtools-extension": "^2.13.8",
     "source-map-explorer": "^1.5.0",
     "typescript": "^3.9.7"
-  }
+  },
+  "nohoist": [
+    "**/mochawesome",
+    "**/mochawesome/**",
+    "**/mocha",
+    "**/mocha/**",
+    "**/cypress",
+    "**/cypress/**"
+  ]
+
 }

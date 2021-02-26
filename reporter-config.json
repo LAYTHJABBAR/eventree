@@ -1,6 +1,6 @@
 
 {
-    "reporterEnabled": "mochawesome",
+    "reporter": "./node_modules/mochawesome/src/mochawesome.js",
     "mochawesomeReporterOptions": {
         "reportDir": "cypress/results/json",
         "overwrite": false,
